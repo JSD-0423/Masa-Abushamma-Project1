@@ -247,6 +247,9 @@ label{
 .details-container h1{
   font-size: 14px;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
 }
 .course-card img {
