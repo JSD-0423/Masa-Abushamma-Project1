@@ -43,6 +43,11 @@ header {
   color: var(--brand-primary);
   align-items: center;
 }
+.header-container h1 {
+ font-size: 16px;
+ font-weight: 400;
+  color: var(--brand-primary);
+}
 .header-buttons {
   display: flex;
   gap: 4px;
@@ -63,13 +68,14 @@ header {
 }
 .banner h1 {
   color: var(--brand-secondary);
+  font-size: 20px;
 }
+
 .banner .text {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 30%;
-  color: var(--body-text);
   padding-top: 20px;
   @media only screen and (max-width: 600px) {
     width: 90%;
@@ -135,7 +141,7 @@ form{
 .search-div ion-icon{
   position: absolute;
   left: 10px;
-  top:29%;
+  top:38%;
 }
 #search-input {
   padding: 0;
