@@ -61,7 +61,7 @@ header {
   background-color: var(--bg_default);
   padding-bottom: 30px;
 }
-.banner h2 {
+.banner h1 {
   color: var(--brand-secondary);
 }
 .banner .text {
