@@ -3,14 +3,14 @@
         "name":"HTML",
         "rate":"4",
         "Author":"Sarah Smith",
-        "imageUrl":"./images//html.png",
+        "imageUrl":"images//html.png",
         "topic":"Web Development Languages"
     },
     {
         "name":"CSS",
         "rate":"3.7",
         "Author":"David Lee",
-        "imageUrl":"./images/CSS.webp",
+        "imageUrl":"images/CSS.webp",
         "topic":"Web Development Languages"
     },
     {
