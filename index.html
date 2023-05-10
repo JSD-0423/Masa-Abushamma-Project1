@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Web Topics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="colors.css" />
+  </head>
+  <body>
+    <header class="container header-container">
+      <p>Web Topics</p>
+      <div class="header-buttons">
+        <button id="dark-mood-button" class="Light-button">
+          <ion-icon name="moon-outline"></ion-icon>
+          <p>Dark Mode</p>
+        </button>
+        <button onclick="openSlide()" class="Light-button">
+          <ion-icon name="heart-outline"></ion-icon>
+          <p>Favourite</p>
+        </button>
+      </div>
+    </header>
+    <div class="banner">
+      <div class="wave-design">
+        <div class="wave-above"></div>
+        <div class="wave-bottom"></div>
+      </div>
+      <div class="text">
+        <h1>Welcome to our website!</h1>
+        <p>We have a new design that's fresh, modern, and easy to use .</p>
+      </div>
+    </div>
+    <div class="container container-of-content">
+      <form>
+        <div class="search-div">
+          <input type="text" placeholder="Search" id="search-input" />
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+        <div class="select-container">
+          <div class="select-div">
+            <label for="sortBy">Sort By:</label>
+            <select name="sortBy" id="sortBy">
+              <option value="Default">Default</option>
+              <option value="Default">A-Z</option>
+              <option value="low-hight">low-to-hight-rating</option>
+              <option value="hight-low">hight-to-low-rating</option>
+            </select>
+          </div>
+          <div class="select-div">
+            <label for="filterBy">Filter By:</label>
+            <select name="filterBy" id="filterBy">
+              <option value="Default">Default</option>
+              <option value="web-development">Web development</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      <h1>"<span id="number-of-courses"></span>" Web Topics Found</h1>
+      <div id="courses"></div>
+    </div>
+    <footer>Developed with <ion-icon name="heart"></ion-icon> © 2023</footer>
+    <div id="Favourite" class="container">
+      <h1>My Favourite Topics</h1>
+      <div id="FavouriteItems"></div>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="myScript1.js"></script>
+  </body>
+</html>
