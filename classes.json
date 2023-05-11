@@ -10,14 +10,14 @@
         "name":"CSS",
         "rate":"3.7",
         "Author":"David Lee",
-        "imageUrl":"./images/CSS.webp",
+        "imageUrl":"./images/css.webp",
         "topic":"Web Development Languages"
     },
     {
         "name":"JavaScript",
         "rate":"4",
         "Author":"Emily Chen",
-        "imageUrl":"./images/JavaScript.jpg",
+        "imageUrl":"./images/javascript.jpg",
         "topic":"Web Development Languages"
     },
     {
