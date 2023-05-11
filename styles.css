@@ -118,16 +118,17 @@ header {
     padding-top:20px;
   }
 }
-.container-of-content h1{
+.container-of-content > h1{
   color: var(--body-text);
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  padding-top: 15px;
 }
 /*form style*/
 form{
   @media only screen and (min-width: 600px) {
     display: flex;
     align-items: stretch;
-    height:55px
+    height:50px
   }
   
 }
@@ -152,19 +153,18 @@ form{
   height:100%;
   font-size: 16px;
   width:100%;
+  padding-left: 30px;
   background-color: var(--bg_default);
   color:var(--body-text);
   border-top-left-radius:14px;
   border-bottom-left-radius:14px;
+  box-shadow:0px 0px 20px rgba(0, 0, 0, 0.1);
   @media only screen and (max-width: 600px) {
     width:100%;
     border-bottom-left-radius:0px;
     border-top-right-radius:14px;
     border-bottom: 1px solid var(--lines-color);
   }
-}
-input[type="text"]::placeholder {
-  padding-left: 30px;
 }
 .select-container{
   display: flex;
@@ -180,8 +180,7 @@ select{
   font-size: 16px;
   width: 100%;
   height:100%;
-  padding-top: 20px;
-  padding-bottom: 15px;
+  padding-top: 25px;
   padding-left: 5px;
   color:var(--body-text);
   background-color: var(--bg_default);
@@ -193,12 +192,14 @@ select{
 #filterBy{
   border-bottom-right-radius:14px;
   border-top-right-radius:14px;
+  box-shadow:  0px 0px 5px rgba(0, 0, 0, 0.1);
   @media only screen and (max-width: 600px) {
     border-top-right-radius:0px;
   }
 }
 #sortBy{
   border-bottom-left-radius:0px;
+  box-shadow:  0px 0px 10px rgba(0, 0, 0, 0.1);
   border-right: 1px solid var(--lines-color);
   @media only screen and (max-width: 600px) {
     border-bottom-left-radius:14px;
@@ -207,7 +208,9 @@ select{
 label{
   position: absolute;
   left: 8px;
+  top:6px;
   color:var(--body-text);
+  font-size: 12px;
 }
 .select-div{
   position: relative;
@@ -216,41 +219,34 @@ label{
 }
 /*content style*/
 .rating {
+  padding-top: 22px;
+  padding-bottom: 5px;
   display: inline-block;
 }
 
-.star {
-  font-size: 30px;
-  color: #ccc;
-  cursor: pointer;
-}
-
-.star.active {
-  color: gold;
-}
 #courses{
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 34px;
 }
 
 .course-card {
   background-color: var(--bg_default);
   border-radius: 10px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  width:23%;
-  height:300px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+  width:18%;
+  height:280px;
   @media only screen and (max-width: 600px) {
     margin: 0;
     width: 100%;
-    margin-top:20px
+    height:330px;
   }
 }
 .details-container {
   padding-left: 10px;
 
 }
-.details-container h1{
+.details-container h1,p{
   font-size: 14px;
   margin: 0;
   white-space: nowrap;
@@ -269,7 +265,7 @@ label{
   }
 }
 .star ion-icon{
-  color:#FFD700;
+  color:#DB7210;
   font-size: 20px;
 }
 
