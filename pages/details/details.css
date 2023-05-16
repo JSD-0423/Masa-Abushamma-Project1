@@ -49,10 +49,11 @@
 .side-card-details {
   height: 50%;
   width: 100%;
+  padding:30px 20px 30px 20px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-inline: 20px;
+  
 }
 .course-name {
   font-size: 1em;
