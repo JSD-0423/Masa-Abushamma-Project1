@@ -1,0 +1,128 @@
+.item-details-page .summary-box-section {
+  background-color: #333333;
+  width: 100%;
+  color: white;
+}
+.summary-box > .topic {
+  color: var(--brand-secondary);
+  font-size: 1rem;
+  font-weight: 400;
+}
+.summary-box > .name {
+  font-size: 1.4em;
+}
+.summary-box > .name,
+.details {
+  color: white;
+}
+.summary-box-container {
+    padding: 0 43% 0 19%;
+    position: relative;
+    @media only screen and (max-width: 900px) {
+        padding: 0 10px 0 10px;
+      }
+}
+.summary-box {
+    padding:30px 0;
+   
+}
+.summary-box > .details {
+  padding-top: 20px;
+  font-size: 1em;
+}
+.side-card {
+  width: 280px;
+  height: 350px;
+  background-color: white;
+  position: absolute;
+  top: 30px;
+  left: 60%;
+  @media only screen and (max-width: 900px) {
+    position: static;
+  }
+}
+.side-card-image {
+  height: 50%;
+  width: 100%;
+  object-fit: cover;
+}
+.side-card-details {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-inline: 20px;
+}
+.course-name {
+  font-size: 1em;
+  color: black;
+}
+.course-name-author {
+  display: flex;
+  gap: 5px;
+  color: black;
+}
+.author-name {
+  text-decoration: underline;
+  color: blue;
+}
+.side-card-box {
+  margin-top: 10px;
+  border: 1px solid var(--lines-color);
+  padding-inline: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.side-card-box p {
+  color: black;
+}
+.side-card-button {
+  width: 100%;
+  height: 50px;
+  background-color: var(--brand-secondary);
+  border: none;
+  font-size: 1.1em;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.side-card-button ion-icon {
+  color: white;
+  font-size: 1.4em;
+}
+.credites-text {
+  text-align: center;
+  font-weight: 200;
+  font-size: 0.8em;
+  padding-top: 8px;
+  color: grey;
+}
+.sub-topics-section {
+    padding: 0 43% 0 19%;
+    @media only screen and (max-width: 900px) {
+        padding: 0 10px 0 10px;
+      }
+}
+.header {
+  border: none !important;
+}
+.row {
+  display: flex;
+  border-top: 1px solid var(--lines-color);
+  height: 50px;
+  align-items: center;
+  padding-inline: 20px;
+  gap: 5px;
+  background-color: var(--bg_default);
+}
+.row ion-icon {
+  color: var(--brand-secondary);
+}
+.sub-topics-container {
+  border: 1px solid var(--lines-color);
+  margin: 30px 0;
+
+}

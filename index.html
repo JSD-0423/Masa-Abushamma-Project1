@@ -12,42 +12,49 @@
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="colors.css" />
+    <link rel="stylesheet" href="global.css" />
   </head>
   <body>
     <header class="container header-container">
       <h1>Web Topics</h1>
       <div class="header-buttons">
-        <button id="dark-mood-button" class="Light-button">
+        <button class="Light-button dark-mood-button">
           <ion-icon name="moon-outline"></ion-icon>
           <p>Dark Mode</p>
         </button>
         <button onclick="openSlide()" class="Light-button">
           <ion-icon name="heart-outline"></ion-icon>
-          <p>Favourite</p>
+          <p>Favourites</p>
         </button>
       </div>
     </header>
-    <div class="banner">
-      <div class="wave-design">
-        <div class="wave-above"></div>
-        <div class="wave-bottom"></div>
+    <section class="design-section">
+      <div class="cross-design">
+        <div class="cross-bottom"></div>
+        <div class="cross-top"></div>
       </div>
       <div class="text">
         <h1>Welcome to our website!</h1>
         <p>We have a new design that's fresh, modern, and easy to use .</p>
       </div>
-    </div>
-    <div class="container container-of-content">
+    </section>
+    <main class="container">
       <form>
-        <div class="search-div">
-          <input type="text" placeholder="Search" id="search-input" />
-          <ion-icon name="search-outline"></ion-icon>
+        <div class="search-container">
+          <span class="search-icon">
+            <ion-icon name="search-outline"></ion-icon>
+          </span>
+          <input
+            type="text"
+            placeholder="Search the website..."
+            class="search-input"
+          />
         </div>
         <div class="select-container">
-          <div class="select-div">
-            <label for="sortBy">Sort By:</label>
+          <div class="select-box">
+            <label for="sortBy">Sort by:</label>
             <select name="sortBy" id="sortBy">
               <option value="Default">Default</option>
               <option value="Default">A-Z</option>
@@ -55,7 +62,7 @@
               <option value="hight-low">hight-to-low-rating</option>
             </select>
           </div>
-          <div class="select-div">
+          <div class="select-box">
             <label for="filterBy">Filter By:</label>
             <select name="filterBy" id="filterBy">
               <option value="Default">Default</option>
@@ -64,13 +71,19 @@
           </div>
         </div>
       </form>
-      <h1>"<span id="number-of-courses"></span>" Web Topics Found</h1>
-      <div id="courses"></div>
-    </div>
+      <div class="container-content">
+        <h1>"<span class="number-of-courses"></span>" Web Topics Found</h1>
+        <div class="courses">
+        
+        </div>
+      </div>
+    </main>
     <footer>Developed with <ion-icon name="heart"></ion-icon> © 2023</footer>
-    <div id="Favourite" class="container">
+    <div class="container favourite-container">
       <h1>My Favourite Topics</h1>
-      <div id="FavouriteItems"></div>
+      <div class="favourite-items">
+       
+      </div>
     </div>
     <script
       type="module"
@@ -80,6 +93,7 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <script src="myScript1.js"></script>
+    <script src="index.js"></script>
+    <script src="global.js"></script>
   </body>
 </html>
