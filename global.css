@@ -12,8 +12,29 @@
   /*global styles*/
   .container {
     padding-inline: 5%;
-    @media only screen and (max-width: 900px) {
-      padding-inline: 4%;
+  }
+  @media only screen and (max-width: 600px) {
+    .container{
+    padding-inline: 4%;
+    }
+    .Light-button{
+      padding: 4px 10px;
+      height: auto;
+
+    }
+    .header-buttons p{
+      display: none;
+
+    }
+    .cross-design{
+      height: 30px !important;
+
+    }
+    .design-section .text{
+      width: 90% !important;
+      top: 10px !important;
+      padding-bottom: 30px;
+
     }
   }
   img{
@@ -32,16 +53,6 @@
     gap: 4px;
     align-items: center;
     text-align: center;
-    width: 100px;
-    min-height: 25px;
-    max-height: auto;
-    overflow: hidden;
-    @media only screen and (max-width: 900px) {
-      padding: 4px 10px;
-      width: 35px;
-      min-height: 25px;
-      height: auto;
-    }
   }
   .header-container {
     background-color: var(--bg_default);
@@ -59,19 +70,11 @@
     display: flex;
     gap: 4px;
   }
-  .header-buttons p {
-    @media only screen and (max-width: 900px) {
-      display: none;
-    }
-  }
   /* cross design section */
   .cross-design {
     position: relative;
     width: 100%;
     height: 80px;
-    @media only screen and (max-width: 900px) {
-      height: 30px;
-    }
   }
   .cross-top {
     width: 100%;
@@ -106,11 +109,6 @@
     margin-right: auto;
     width: 30%;
     line-height: 20px;
-    @media only screen and (max-width: 900px) {
-      width: 90%;
-      top: 10px;
-      padding-bottom: 30px;
-    }
   }
   /*footer*/
 footer {
