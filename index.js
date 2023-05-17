@@ -21,7 +21,6 @@ searchInput.addEventListener('keyup', function () {
             document.querySelector('.courses').innerHTML = '';
             for (let i = 0; i < results.length; i++) {
                 const obj = results[i];
-                console.log(obj)
                 createHtmlDom(obj)
             }
         })
@@ -35,45 +34,7 @@ fetch('./classes.json')
             createHtmlDom(x)
 
         })
-    })
-    function createHtmlDom(values) {
-        const div = document.createElement("div");
-        const pic = document.createElement("img");
-        const details = document.createElement('div')
-        const topic = document.createElement("p");
-        const name = document.createElement("h1");
-        const author = document.createElement("p");
-        const stars = document.createElement('div');
-        div.className += "course-card"
-        stars.className += 'rating';
-        details.className += 'details-container';
-        div.addEventListener('click', function () {
-            const itemId = values.name;
-            const detailsUrl = `./pages/details/details.html?id=${itemId}`;
-            window.location.href = detailsUrl;
-        });
-        details.appendChild(topic)
-        details.appendChild(name)
-        details.appendChild(rating(values, stars))
-        details.appendChild(author)
-        topic.className += 'topic text-overflow-hide';
-        name.className += 'text-overflow-wrap';
-        author.className += 'author-name text-overflow-hide';
-        div.appendChild(pic)
-        div.appendChild(details)
-        pic.src = values.imageUrl;
-        topic.innerText = values.topic;
-        name.innerText = values.name;
-        author.innerText = `Author : ${values.author}`;
-        pic.setAttribute('width', '400px');
-        pic.setAttribute('height', '200px');
-        document.querySelector('.courses').appendChild(div)
-    }
-    fetch('./classes.json')
-    .then(response => response.json())
-    .then(data => {
         data.favourites.map((x) => {
-            console.log(x)
             const div = document.createElement("div");
             const pic = document.createElement("img");
             const details = document.createElement('div')
@@ -94,3 +55,36 @@ fetch('./classes.json')
             document.querySelector('.favourite-items').appendChild(div);
         })
     })
+function createHtmlDom(values) {
+    const div = document.createElement("div");
+    const pic = document.createElement("img");
+    const details = document.createElement('div')
+    const topic = document.createElement("p");
+    const name = document.createElement("h1");
+    const author = document.createElement("p");
+    const stars = document.createElement('div');
+    div.className += "course-card"
+    stars.className += 'rating';
+    details.className += 'details-container';
+    div.addEventListener('click', function () {
+        const itemId = values.name;
+        const detailsUrl = `./pages/details/details.html?id=${itemId}`;
+        window.location.href = detailsUrl;
+    });
+    details.appendChild(topic)
+    details.appendChild(name)
+    details.appendChild(rating(values, stars))
+    details.appendChild(author)
+    topic.className += 'topic text-overflow-hide';
+    name.className += 'text-overflow-wrap';
+    author.className += 'author-name text-overflow-hide';
+    div.appendChild(pic)
+    div.appendChild(details)
+    pic.src = values.imageUrl;
+    topic.innerText = values.topic;
+    name.innerText = values.name;
+    author.innerText = `Author : ${values.author}`;
+    pic.setAttribute('width', '400px');
+    pic.setAttribute('height', '200px');
+    document.querySelector('.courses').appendChild(div)
+}

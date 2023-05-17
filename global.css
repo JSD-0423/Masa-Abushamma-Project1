@@ -84,7 +84,7 @@ img {
   height: 70px;
 }
 .header-container h1 {
-  font-size: 16px;
+  font-size: 1.1rem;
   font-weight: 400;
   color: var(--brand-primary);
 }
@@ -104,7 +104,7 @@ img {
   height: 80px;
 }
 .cross-top {
-  clip-path: polygon(0 0, 0 100%, 100% 0);
+  clip-path: polygon(0 0, 0 100%, 90% 0);
   position: absolute;
   background: linear-gradient(
     to Right,
@@ -112,8 +112,13 @@ img {
     var(--brand-secondary) 100%
   );
 }
+@media only screen and (max-width: 600px) {
+  .cross-top {
+    clip-path: polygon(0 0, 0 100%, 100% 0);
+  }
+}
 .cross-bottom {
-  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  clip-path: polygon(100% 0, 0 0, 100% 96%);
   position: absolute;
   background: var(--brand-secondary);
 }
@@ -122,12 +127,12 @@ img {
 }
 .design-section h1 {
   color: var(--brand-secondary);
-  font-size: 20px;
+  font-size: 1.3rem;
 }
 
 .design-section .design-section-text {
   position: relative;
-  top: -18px;
+  top: -22px;
   margin-left: auto;
   margin-right: auto;
   width: 30%;
@@ -149,7 +154,7 @@ footer {
   gap: 4px;
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 1rem;
   color: var(--body-text);
   margin-top: 40px;
   margin-bottom: 30px;
@@ -170,8 +175,8 @@ footer ion-icon {
   padding-top: 20px;
   padding-bottom: 15px;
 }
-.favourite-container h1 {
-  font-size: 18px;
+.favourite-container > h1 {
+  font-size: 1rem;
   padding-bottom: 15px;
 }
 .favourite-items {
@@ -180,18 +185,17 @@ footer ion-icon {
   flex-wrap: wrap;
 }
 .favourite-card {
-  width: 150px;
+  width: 140px;
   height: 130px;
   border-radius: 5px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
-.favourite-card h1 {
+.favourite-card > .details > h1 {
   color: var(--body-text);
-  font-size: 14px;
+  font-size: 1rem;
   padding-left: 5px;
   padding: 0;
-  width: 100%;
 }
 .favourite-card img {
   width: 100%;
@@ -199,7 +203,6 @@ footer ion-icon {
 }
 .favourite-card .details {
   height: 45%;
-  width: 100%;
   padding-inline: 10px;
 }
 /*rating icons style*/
