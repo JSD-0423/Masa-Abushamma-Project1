@@ -27,13 +27,14 @@
   font-size: 1em;
 }
 .side-card {
-  width: 335px;
-  height: 420px;
+  width: 330px;
+  height: 405px;
   background-color: white;
   position: absolute;
   top: 30px;
   left: 59%;
   border: 2px solid white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 .side-card-image {
   height: 50%;
@@ -41,10 +42,11 @@
 .side-card-details {
   height: 50%;
   width: 100%;
-  padding-inline: 10px;
+  padding-inline: 15px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-bottom: 10px;
 }
 .course-name {
   font-size: 1em;
