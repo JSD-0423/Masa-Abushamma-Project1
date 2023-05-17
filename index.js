@@ -56,9 +56,9 @@ fetch('./classes.json')
         details.appendChild(name)
         details.appendChild(rating(values, stars))
         details.appendChild(author)
-        topic.className += 'topic text-overflow';
-        name.className += 'text-overflow';
-        author.className += 'author-name';
+        topic.className += 'topic text-overflow-hide';
+        name.className += 'text-overflow-wrap';
+        author.className += 'author-name text-overflow-hide';
         div.appendChild(pic)
         div.appendChild(details)
         pic.src = values.imageUrl;

@@ -5,8 +5,6 @@ main {
 }
 form {
   background-color: var(--bg_default);
-  width: 100%;
-  height: fit-content;
   border-radius: 10px;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
 }
@@ -26,7 +24,6 @@ form {
   .course-card{
     margin: 0;
     width: 100% !important;
-    height: 330px !important;
 
   }
   .course-card img{
@@ -38,16 +35,14 @@ form {
 .search-container {
   padding: 2px;
   position: relative;
-  height: 100%;
+  height: 55px;
+  width: 100%;
   display: flex;
 }
 .search-input {
-  padding: 0;
-  background-position: 10px center;
   border: none;
   padding-top: 15px;
   padding-bottom: 15px;
-  height: 100%;
   font-size: 16px;
   width: 100%;
   background-color: var(--bg_default);
@@ -85,10 +80,8 @@ label {
 }
 .select-box {
   position: relative;
-  width: 100%;
-  height: 100%;
   border-left: 1px solid var(--lines-color);
-  padding-bottom: 7px;
+  padding:0px 10px 7px 10px;
 }
 /*content style*/
 .container-content > h1 {
@@ -99,32 +92,44 @@ label {
 .courses {
   display: flex;
   flex-wrap: wrap;
-  gap: 34px;
+  column-gap: 2%;
+  row-gap: 35px;
 }
 
 .course-card {
   background-color: var(--bg_default);
   border-radius: 10px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
-  width: 245px;
-  height: 295px;
+  width: 18.4%;
+  height: 290px;
   overflow: hidden;
 }
-.details-container {
-  padding-left: 10px;
+@media only screen and (max-width: 1200px) {
+  .course-card {
+    width: 23.5%;
+  }
 }
-.course-card img {
+@media only screen and (max-width: 1000px) {
+  .course-card {
+    width: 32%;
+  }
+}
+
+.details-container {
+  padding-inline: 15px;
+}
+.course-card>img {
   width: 100%;
   height: 150px;
   background-color: white;
 }
-.details-container .author-name {
-  padding-top: 16px;
+.details-container>.author-name {
+  padding-top: 10px;
   font-weight: 200;
   font-size: 12px;
 }
 .details-container > h1 {
-  padding-bottom: 30px;
+  height:45px;
   font-size: 14px;
 }
 .details-container > .topic {
