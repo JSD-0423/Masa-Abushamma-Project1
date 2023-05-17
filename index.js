@@ -69,3 +69,28 @@ fetch('./classes.json')
         pic.setAttribute('height', '200px');
         document.querySelector('.courses').appendChild(div)
     }
+    fetch('./classes.json')
+    .then(response => response.json())
+    .then(data => {
+        data.favourites.map((x) => {
+            console.log(x)
+            const div = document.createElement("div");
+            const pic = document.createElement("img");
+            const details = document.createElement('div')
+            const name = document.createElement("h1");
+            const author = document.createElement("p");
+            const stars = document.createElement('div');
+            div.className += "favourite-card"
+            stars.className += 'rating';
+            details.className += 'details';
+            details.appendChild(name)
+            details.appendChild(rating(x, stars))
+            div.appendChild(pic)
+            div.appendChild(details)
+            pic.src = x.imageUrl;
+            name.className += 'text-overflow-hide';
+            name.innerText = x.name;
+            author.innerText = `Author : ${x.author}`;
+            document.querySelector('.favourite-items').appendChild(div);
+        })
+    })
