@@ -27,8 +27,7 @@
   font-size: 1em;
 }
 .side-card {
-  width: 330px;
-  height: 405px;
+  width: 320px;
   background-color: white;
   position: absolute;
   top: 30px;
@@ -36,17 +35,17 @@
   border: 2px solid white;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
-.side-card-image {
-  height: 50%;
+.sidecard-image-container img {
+  height: 200px;
+}
+.side-card-details-container{
+padding: 10px 15px 15px 15px;
 }
 .side-card-details {
-  height: 50%;
   width: 100%;
-  padding-inline: 15px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-bottom: 10px;
 }
 .course-name {
   font-size: 1em;
@@ -67,6 +66,10 @@
   padding-inline: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
+}
+.side-card-content{
+  display: flex;
+  flex-direction: column;
 }
 .side-card-box p {
   color: black;
@@ -117,11 +120,12 @@
   min-height: 50px;
   align-items: center;
   padding-inline: 20px;
-  gap: 5px;
+  gap: 10px;
   background-color: var(--bg_default);
 }
 .sub-topics-row ion-icon {
   color: var(--brand-secondary);
+  font-size: 1.4rem;
 }
 .sub-topics-container {
   border: 1px solid var(--lines-color);
