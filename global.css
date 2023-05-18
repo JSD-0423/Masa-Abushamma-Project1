@@ -42,7 +42,7 @@ body {
   .container {
     padding-inline: 4%;
   }
-  .Light-button {
+  .light-button {
     padding: 4px 10px;
     height: auto;
   }
@@ -66,7 +66,7 @@ img {
 .text-overflow-wrap {
   overflow-wrap: break-word;
 }
-.Light-button {
+.light-button {
   border: 1px solid var(--lines-color);
   border-radius: 5px;
   background-color: var(--bg_default);
@@ -175,6 +175,7 @@ footer ion-icon {
   bottom: 0;
   left: 0;
   background-color: var(--bg_default);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
   padding-top: 20px;
   padding-bottom: 15px;
 }
