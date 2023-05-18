@@ -41,28 +41,36 @@
     </section>
     <main class="container">
       <form>
-        <div class="search-container">
-          <span class="search-icon">
-            <ion-icon name="search-outline"></ion-icon>
-          </span>
-          <input
-            type="text"
-            placeholder="Search the website..."
-            class="search-input"
-          />
-        </div>
-        <div class="select-container">
-          <div class="select-box width-100 height-100">
-            <label for="sortBy">Sort by:</label>
-            <select name="sortBy" id="sortBy">
-              <option value="Default">Default</option>
-            </select>
+        <div class="form-container">
+          <div class="search-container">
+            <span class="search-icon">
+              <ion-icon name="search-outline"></ion-icon>
+            </span>
+            <input
+              type="text"
+              placeholder="Search the website..."
+              class="search-input"
+            />
           </div>
-          <div class="select-box width-100 height-100">
-            <label for="filterBy">Filter By:</label>
-            <select name="filterBy" id="filterBy">
-              <option value="Default">Default</option>
-            </select>
+          <div class="selects-box">
+            <div class="select-container">
+              <div class="select-box width-100 height-100">
+                <div class="select-box-content">
+                  <label for="sortBy">Sort by:</label>
+                  <select name="sortBy" id="sortBy" class="width-100">
+                    <option value="Default" class="width-100">Default</option>
+                  </select>
+                </div>
+              </div>
+              <div class="select-box width-100 height-100">
+                <div class="select-box-content">
+                  <label for="filterBy">Filter By:</label>
+                  <select name="filterBy" id="filterBy" class="width-100">
+                    <option value="Default" class="width-100">Default</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </form>
