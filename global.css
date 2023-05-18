@@ -88,6 +88,9 @@ img {
   font-weight: 400;
   color: var(--brand-primary);
 }
+.header-container>a {
+ text-decoration: none;
+}
 .header-buttons {
   display: flex;
   gap: 4px;
