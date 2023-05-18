@@ -183,16 +183,20 @@ footer ion-icon {
   font-size: 1rem;
   padding-bottom: 15px;
 }
+.favourite-items-container{
+  display: flex;
+  overflow: auto;
+}
 .favourite-items {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 16px;
 }
 .favourite-card {
   width: 130px;
   border-radius: 5px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+  margin: 2px;
 }
 .favourite-card > .details > h1 {
   color: var(--body-text);
@@ -205,8 +209,8 @@ footer ion-icon {
   height: 70px;
 }
 .favourite-card .details {
-  height: 45%;
-  padding-inline: 10px;
+  padding-inline: 7px;
+  padding-bottom: 5px;
 }
 /*rating icons style*/
 .rating ion-icon {

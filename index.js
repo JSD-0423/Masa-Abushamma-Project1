@@ -36,24 +36,28 @@ fetch('./classes.json')
         })
         data.favourites.map((x) => {
             const div = document.createElement("div");
+            const imageDiv = document.createElement("div");
             const pic = document.createElement("img");
             const details = document.createElement('div')
             const name = document.createElement("h1");
             const author = document.createElement("p");
             const stars = document.createElement('div');
+            imageDiv.appendChild(pic)
             div.className += "favourite-card"
             stars.className += 'rating';
             details.className += 'details';
+            imageDiv.className+='image-favourite-card'
             details.appendChild(name)
             details.appendChild(rating(x, stars))
-            div.appendChild(pic)
+            div.appendChild(imageDiv)
             div.appendChild(details)
-            pic.src = x.imageUrl;
+            pic.src = `../../${x.imageUrl}`;
             name.className += 'text-overflow-hide';
             name.innerText = x.name;
             author.innerText = `Author : ${x.author}`;
             document.querySelector('.favourite-items').appendChild(div);
         })
+        
     })
 function createHtmlDom(values) {
     const div = document.createElement("div");
