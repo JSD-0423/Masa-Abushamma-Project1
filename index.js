@@ -51,7 +51,7 @@ fetch('./classes.json')
             details.appendChild(rating(x, stars))
             div.appendChild(imageDiv)
             div.appendChild(details)
-            pic.src = `../../${x.imageUrl}`;
+            pic.src = `.${x.imageUrl}`;
             name.className += 'text-overflow-hide';
             name.innerText = x.name;
             author.innerText = `Author : ${x.author}`;
