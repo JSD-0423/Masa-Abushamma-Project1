@@ -316,22 +316,22 @@
 ],
 "favourites":[
     {
-        "name":"Web Analytics",
+        "name":"React",
         "rate":"4",
-        "author":"Ryan Jones",
-        "imageUrl":"./images/analytics.png",
-        "topic":"Web Dwvelopment Concepts and Technology",
+        "author":"Daniel Brown",
+        "imageUrl":"./images/react.webp",
+        "topic":"Frontend Frameworks and Libraries",
         "details":"HTML (Hypertext Markup Language) is the standard markup language for creating web pages and other information that can be displayed in a web browser. It provides a structure for content and defines how it should be displayed on a web page, including text, images, and multimedia, HTML is essential for creating static web pages and is a foudational technology for the World Wide Web."
-        
     },
     {
-        "name":"Content Management Systems (CMS)",
-        "rate":"4",
-        "author":"Victoria Kim",
-        "imageUrl":"./images/cms.png",
+        "name":"Cloud Computing",
+        "rate":"4.3",
+        "author":"Jacob Garcia",
+        "imageUrl":"./images/cloud.jpeg",
         "topic":"Web Development Concepts and Technology",
         "details":"HTML (Hypertext Markup Language) is the standard markup language for creating web pages and other information that can be displayed in a web browser. It provides a structure for content and defines how it should be displayed on a web page, including text, images, and multimedia, HTML is essential for creating static web pages and is a foudational technology for the World Wide Web."
     }
+    
 
 ]
 }
