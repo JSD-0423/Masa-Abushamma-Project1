@@ -25,6 +25,12 @@
 .summary-box > .details {
   padding-top: 20px;
   font-size: 1em;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .side-card {
   width: 320px;
@@ -123,9 +129,16 @@ padding: 10px 15px 15px 15px;
   gap: 10px;
   background-color: var(--bg_default);
 }
+.sub-topics-row p {
+width: 95%;
+text-overflow: ellipsis;
+overflow: hidden;
+}
 .sub-topics-row ion-icon {
   color: var(--brand-secondary);
   font-size: 1.4rem;
+  width: 5%;
+
 }
 .sub-topics-container {
   border: 1px solid var(--lines-color);

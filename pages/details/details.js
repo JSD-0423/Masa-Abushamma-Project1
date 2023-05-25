@@ -26,7 +26,7 @@ fetch('../../classes.json')
             const div = document.createElement("div");
             const imageDiv = document.createElement("div");
             const pic = document.createElement("img");
-            const details = document.createElement('div')
+            const details = document.createElement('div');
             const name = document.createElement("h1");
             const author = document.createElement("p");
             const stars = document.createElement('div');
