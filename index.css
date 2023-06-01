@@ -7,13 +7,11 @@ form {
   flex-grow: 8;
 }
 .search-input {
-  border: none;
   font-size: 1.1rem;
   background-color: var(--bg_default);
   color: var(--body-text);
 }
 select {
-  border: none;
   font-size: 1.1rem;
   color: var(--body-text);
   background-color: var(--bg_default);
@@ -22,14 +20,9 @@ select {
 label {
   color: var(--body-text);
   font-size: 0.8rem;
-  padding-left: 5px;
 }
 .select-box {
-  position: relative;
   border-left: 1px solid var(--lines-color);
-}
-.select-box-content {
-  padding-inline: 10px;
 }
 /*content style*/
 .container-content > h1 {
@@ -39,12 +32,9 @@ label {
   background-color: var(--bg_default);
 }
 .course-card > img {
-  width: 100%;
   height: 150px;
-  background-color: white;
 }
 .details-container > .author-name {
-  font-weight: 400;
   font-size: 0.9rem;
   color: #808080b8;
 }

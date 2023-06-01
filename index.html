@@ -76,23 +76,23 @@
             <input
               type="text"
               placeholder="Search the website..."
-              class="search-input w-100"
+              class="search-input w-100 border-0"
             />
           </div>
           <div class="flex-grow-1">
             <div class="select-container d-flex h-100 p-1">
-              <div class="select-box w-100 h-100">
-                <div class="select-box-content">
-                  <label for="sortBy">Sort by:</label>
-                  <select name="sortBy" id="sortBy" class="w-100">
+              <div class="select-box w-100 h-100 position-relative">
+                <div class="select-box-content px-2">
+                  <label for="sortBy" class="ps-1">Sort by:</label>
+                  <select name="sortBy" id="sortBy" class="w-100 border-0">
                     <option value="Default" class="w-100">Default</option>
                   </select>
                 </div>
               </div>
-              <div class="select-box w-100 h-100">
-                <div class="select-box-content">
-                  <label for="filterBy">Filter By:</label>
-                  <select name="filterBy" id="filterBy" class="w-100">
+              <div class="select-box w-100 h-100 position-relative">
+                <div class="select-box-content px-2">
+                  <label for="filterBy" class="ps-1">Filter By:</label>
+                  <select name="filterBy" id="filterBy" class="w-100 border-0">
                     <option value="Default" class="w-100">Default</option>
                   </select>
                 </div>
@@ -113,9 +113,9 @@
     <footer class="d-flex gap-1 justify-content-center align-items-center my-5">
       Developed with <ion-icon name="heart"></ion-icon> © 2023
     </footer>
-    <div class="favourite-container w-100 position-fixed bottom-0 left-0 py-4">
+    <div class="favourite-container w-100 position-fixed bottom-0 left-0 py-4 px-5">
       <div class="container-fluid w-100">
-        <p class="h4 pb-3"><strong>My Favourite Topics</strong></p>
+        <p class="h5 pb-2"><strong>My Favourite Topics</strong></p>
         <div class="d-flex overflow-auto">
           <div class="favourite-items d-flex gap-3"></div>
         </div>

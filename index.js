@@ -43,7 +43,7 @@ fetch('./classes.json')
             const author = document.createElement("p");
             const stars = document.createElement('div');
             imageDiv.appendChild(pic)
-            div.className += "favourite-card overflow-hidden m-1 shadow-sm rounded"
+            div.className += "favourite-card overflow-hidden m-1 rounded"
             stars.className += 'rating d-flex';
             details.className += 'details py-2';
             imageDiv.className+='image-favourite-card'
@@ -52,7 +52,8 @@ fetch('./classes.json')
             div.appendChild(imageDiv)
             div.appendChild(details)
             pic.src = `${x.imageUrl}`;
-            name.className += 'overflow-hidden text-nowrap text-truncate';
+            pic.className+='object-fit-cover w-100';
+            name.className += 'overflow-hidden text-nowrap text-truncate m-0';
             name.innerText = x.name;
             author.innerText = `Author : ${x.author}`;
             document.querySelector('.favourite-items').appendChild(div);
@@ -81,12 +82,12 @@ function createHtmlDom(values) {
     details.appendChild(rating(values, stars))
     details.appendChild(author)
     topic.className += 'topic overflow-hidden text-truncate m-0';
-    name.className += 'text-overflow-wrap m-0 h1';
-    author.className += 'author-name m-0 overflow-hidden text-truncate';
+    name.className += 'm-0 h1 text-break';
+    author.className += 'author-name m-0 overflow-hidden text-truncate font-weight-light';
     div.appendChild(pic)
     div.appendChild(details)
     pic.src = values.imageUrl;
-    pic.className+='card-img-top';
+    pic.className+='card-img-top w-100 bg-white object-fit-cover';
     topic.innerText = values.topic;
     name.innerText = values.name;
     author.innerText = `Author : ${values.author}`;

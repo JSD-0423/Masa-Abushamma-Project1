@@ -88,14 +88,14 @@ padding: 25px 15px 15px 15px;
   border-collapse: separate;
 }
 td p {
-width: 90%;
+width: 93%;
 text-overflow: ellipsis;
 overflow: hidden;
 }
 td ion-icon {
   color: var(--brand-secondary);
   font-size: 1.6rem;
-  width:10%;
+  width:7%;
 
 }
 @media only screen and (max-width: 900px) {

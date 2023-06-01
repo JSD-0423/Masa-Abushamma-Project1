@@ -33,7 +33,7 @@ fetch('../../classes.json')
             const author = document.createElement("p");
             const stars = document.createElement('div');
             imageDiv.appendChild(pic)
-            div.className += "favourite-card favourite-card overflow-hidden m-1 shadow-sm rounded"
+            div.className += "favourite-card overflow-hidden m-1 rounded w-100"
             stars.className += 'rating d-flex';
             details.className += 'details py-2';
             imageDiv.className+='image-favourite-card'
@@ -42,7 +42,8 @@ fetch('../../classes.json')
             div.appendChild(imageDiv)
             div.appendChild(details)
             pic.src = `../../${x.imageUrl}`;
-            name.className += 'overflow-hidden text-nowrap text-truncate';
+            pic.className+='object-fit-cover 2-100';
+            name.className += 'overflow-hidden text-nowrap text-truncate p-0 m-0';
             name.innerText = x.name;
             author.innerText = `Author : ${x.author}`;
             document.querySelector('.favourite-items').appendChild(div);
