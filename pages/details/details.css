@@ -1,57 +1,33 @@
 /*Details page style*/
-.item-details-page .summary-box-section {
-  background-color: #333333;
-  color: white;
+.details-page-container{
+  padding: 0 43% 0 19%;
 }
 .summary-box > .topic {
   color: var(--brand-secondary);
   font-size: 1rem;
-  font-weight: 400;
 }
 .summary-box > .name {
   font-size: 1.4em;
 }
-.summary-box > .name,
-.details {
-  color: white;
-}
-.summary-box-container {
-  padding: 0 43% 0 19%;
-  position: relative;
-}
-.summary-box {
-  padding: 30px 0;
-}
 .summary-box > .details {
-  padding-top: 20px;
   font-size: 1em;
   -webkit-line-clamp: 6;
   line-clamp: 6;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .side-card {
   width: 320px;
   background-color: white;
-  position: absolute;
   top: 30px;
   left: 59%;
   border: 2px solid white;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 .sidecard-image-container img {
-  height: 200px;
+  height: 220px;
 }
 .side-card-details-container{
-padding: 10px 15px 15px 15px;
-}
-.side-card-details {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+padding: 25px 15px 15px 15px;
 }
 .course-name {
   font-size: 1em;
@@ -103,46 +79,30 @@ padding: 10px 15px 15px 15px;
   padding-top: 8px;
   color: grey;
 }
-.sub-topics-section {
-  padding: 0 43% 0 19%;
-}
-@media only screen and (max-width: 900px) {
-  .sub-topics-section {
-    padding: 0 10px 0 10px;
-  }
-  .side-card {
-    position: static;
-  }
-  .summary-box-container {
-    padding: 0 10px 10px 10px;
-  }
-}
-.header {
-  border: none !important;
-}
-.sub-topics-row {
-  display: flex;
-  border-top: 1px solid var(--lines-color);
+.topic-tabel {
+  table-layout: fixed;
+  border: 1px solid var(--lines-color);
   min-height: 50px;
-  align-items: center;
-  padding-inline: 20px;
-  gap: 10px;
-  background-color: var(--bg_default);
+  background-color: var(--bg_body);
+  color: var(--body-text);
+  border-collapse: separate;
 }
-.sub-topics-row p {
-width: 95%;
+td p {
+width: 90%;
 text-overflow: ellipsis;
 overflow: hidden;
 }
-.sub-topics-row ion-icon {
+td ion-icon {
   color: var(--brand-secondary);
-  font-size: 1.4rem;
-  width: 5%;
+  font-size: 1.6rem;
+  width:10%;
 
 }
-.sub-topics-container {
-  border: 1px solid var(--lines-color);
-  margin: 30px 0;
-  border-radius: 5px;
-  overflow: hidden;
+@media only screen and (max-width: 900px) {
+  .side-card {
+    position: static !important;
+  }
+  .details-page-container {
+    padding: 0 10px 10px 10px;
+  }
 }

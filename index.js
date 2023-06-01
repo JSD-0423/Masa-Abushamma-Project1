@@ -43,16 +43,16 @@ fetch('./classes.json')
             const author = document.createElement("p");
             const stars = document.createElement('div');
             imageDiv.appendChild(pic)
-            div.className += "favourite-card"
-            stars.className += 'rating';
-            details.className += 'details';
+            div.className += "favourite-card overflow-hidden m-1 shadow-sm rounded"
+            stars.className += 'rating d-flex';
+            details.className += 'details py-2';
             imageDiv.className+='image-favourite-card'
             details.appendChild(name)
             details.appendChild(rating(x, stars))
             div.appendChild(imageDiv)
             div.appendChild(details)
             pic.src = `${x.imageUrl}`;
-            name.className += 'text-overflow-hide';
+            name.className += 'overflow-hidden text-nowrap text-truncate';
             name.innerText = x.name;
             author.innerText = `Author : ${x.author}`;
             document.querySelector('.favourite-items').appendChild(div);
@@ -60,6 +60,7 @@ fetch('./classes.json')
         
     })
 function createHtmlDom(values) {
+    const courseCardContainer = document.createElement("div");
     const div = document.createElement("div");
     const pic = document.createElement("img");
     const details = document.createElement('div')
@@ -67,9 +68,9 @@ function createHtmlDom(values) {
     const name = document.createElement("h1");
     const author = document.createElement("p");
     const stars = document.createElement('div');
-    div.className += "course-card"
-    stars.className += 'rating';
-    details.className += 'details-container';
+    div.className += "course-card card rounded overflow-hidden shadow-sm"
+    stars.className += 'rating d-flex';
+    details.className += 'details-container card-body';
     div.addEventListener('click', function () {
         const itemId = values.name;
         const detailsUrl = `./pages/details/details.html?id=${itemId}`;
@@ -79,16 +80,19 @@ function createHtmlDom(values) {
     details.appendChild(name)
     details.appendChild(rating(values, stars))
     details.appendChild(author)
-    topic.className += 'topic text-overflow-hide';
-    name.className += 'text-overflow-wrap';
-    author.className += 'author-name text-overflow-hide';
+    topic.className += 'topic overflow-hidden text-truncate m-0';
+    name.className += 'text-overflow-wrap m-0 h1';
+    author.className += 'author-name m-0 overflow-hidden text-truncate';
     div.appendChild(pic)
     div.appendChild(details)
     pic.src = values.imageUrl;
+    pic.className+='card-img-top';
     topic.innerText = values.topic;
     name.innerText = values.name;
     author.innerText = `Author : ${values.author}`;
     pic.setAttribute('width', '400px');
     pic.setAttribute('height', '200px');
-    document.querySelector('.courses').appendChild(div)
+    courseCardContainer.appendChild(div)
+    courseCardContainer.className+='col';
+    document.querySelector('.courses').appendChild(courseCardContainer)
 }

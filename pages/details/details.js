@@ -3,6 +3,7 @@ const itemId = urlParams.get('id');
 fetch('../../classes.json')
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         for (variable of data.courses) {
             if(variable.name===itemId){
                 document.querySelector('.topic').textContent=variable.topic;
@@ -22,6 +23,7 @@ fetch('../../classes.json')
     fetch('../../classes.json')
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         data.favourites.map((x) => {
             const div = document.createElement("div");
             const imageDiv = document.createElement("div");
@@ -31,16 +33,16 @@ fetch('../../classes.json')
             const author = document.createElement("p");
             const stars = document.createElement('div');
             imageDiv.appendChild(pic)
-            div.className += "favourite-card"
-            stars.className += 'rating';
-            details.className += 'details';
+            div.className += "favourite-card favourite-card overflow-hidden m-1 shadow-sm rounded"
+            stars.className += 'rating d-flex';
+            details.className += 'details py-2';
             imageDiv.className+='image-favourite-card'
             details.appendChild(name)
             details.appendChild(rating(x, stars))
             div.appendChild(imageDiv)
             div.appendChild(details)
             pic.src = `../../${x.imageUrl}`;
-            name.className += 'text-overflow-hide';
+            name.className += 'overflow-hidden text-nowrap text-truncate';
             name.innerText = x.name;
             author.innerText = `Author : ${x.author}`;
             document.querySelector('.favourite-items').appendChild(div);
