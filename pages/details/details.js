@@ -1,51 +1,80 @@
+import { rating } from "../../global.js";
+import { getFavoriteAndSave } from "../../global.js";
+import { getcard } from "../../global.js";
+import { fetchDataById } from "../../global.js";
+import { getFavorites } from "../../global.js";
+
 const urlParams = new URLSearchParams(window.location.search);
 const itemId = urlParams.get('id');
-fetch('../../classes.json')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        for (variable of data.courses) {
-            if(variable.name===itemId){
-                document.querySelector('.topic').textContent=variable.topic;
-                document.querySelector('title').textContent=`Details about ${variable.name}`;
-                document.querySelector('.name').textContent=variable.name;
-                const stars = document.createElement('div');
-                document.querySelector('.rating').appendChild(rating(variable,stars));
-                document.querySelector('.details').textContent=variable.details;
-                document.querySelector('.side-card-image').setAttribute('src',`../../${variable.imageUrl}`)
-                document.querySelector('.course-name').textContent=variable.name;
-                document.querySelector('.author-name').textContent=variable.author;
+var loadingIcon = document.getElementById('loadingIcon');
 
-             }
-          }
-    })
-    .catch(error => console.error(error));
-    fetch('../../classes.json')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        data.favourites.map((x) => {
-            const div = document.createElement("div");
-            const imageDiv = document.createElement("div");
-            const pic = document.createElement("img");
-            const details = document.createElement('div');
-            const name = document.createElement("h1");
-            const author = document.createElement("p");
-            const stars = document.createElement('div');
-            imageDiv.appendChild(pic)
-            div.className += "favourite-card overflow-hidden m-1 rounded w-100"
-            stars.className += 'rating d-flex';
-            details.className += 'details py-2';
-            imageDiv.className+='image-favourite-card'
-            details.appendChild(name)
-            details.appendChild(rating(x, stars))
-            div.appendChild(imageDiv)
-            div.appendChild(details)
-            pic.src = `../../${x.imageUrl}`;
-            pic.className+='object-fit-cover 2-100';
-            name.className += 'overflow-hidden text-nowrap text-truncate p-0 m-0';
-            name.innerText = x.name;
-            author.innerText = `Author : ${x.author}`;
-            document.querySelector('.favourite-items').appendChild(div);
+loadingIcon.style.display = 'block';
+
+function saveFavorites(favorites) {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+function toggleFavorites() {
+    const topicId = itemId;
+    const favorites = getFavorites();
+    if (favorites.includes(topicId)) {
+        var index = favorites.indexOf(topicId);
+        favorites.splice(index, 1);
+        removeFavoriteAndSave(topicId)
+        document.getElementById("side-card-button-text").innerText = "Add to Favorites";
+    } else {
+        favorites.push(topicId);
+        appendFavoriteAndSave(topicId);
+        document.getElementById("side-card-button-text").innerText = "Remove from Favorites";
+    }
+    saveFavorites(favorites);
+}
+window.onload = function () {
+    const favorites = getFavorites();
+    getDataAndSave();
+    if (!getFavorites().includes(itemId)) {
+        document.getElementById("side-card-button-text").innerText = "Add to Favorites";
+    } else {
+        document.getElementById("side-card-button-text").innerText = "Remove from Favorites";
+    }
+    getFavoriteAndSave(favorites);
+    document.querySelector('#favorites-button').addEventListener('click', toggleFavorites, false);
+}
+async function getDataAndSave() {
+    try {
+        const data = await fetchDataById(itemId);
+        loadingIcon.style.display = 'none';
+        document.getElementById('sub-topic-name').innerText = data.topic
+        document.querySelector('.category').textContent = data.category;
+        document.querySelector('title').textContent = `Details about ${data.topic}`;
+        document.querySelector('.name').textContent = data.topic;
+        const stars = document.createElement('div');
+        document.querySelector('.rating').appendChild(rating(data, stars));
+        document.querySelector('.details').textContent = data.description;
+        document.querySelector('.side-card-image').setAttribute('src', `../../images/${data.image}`)
+        document.querySelector('.course-name').textContent = data.topic;
+        document.querySelector('.author-name').textContent = data.name;
+        data.subtopics.map((y) => {
+            const tableRow = document.createElement('tr');
+            tableRow.innerHTML = `<td class="d-flex px-4 gap-2 align-items-center py-3 overflow-hidden text-truncate"><ion-icon name="checkmark-circle-outline"></ion-icon><p class="m-0">${y}</p></td>`;
+            document.getElementById('tBody').appendChild(tableRow)
+
         })
-    })
+
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
+async function appendFavoriteAndSave(id) {
+    try {
+        const favoritesData = await fetchDataById(id);
+        getcard(favoritesData, id);
+
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
+function removeFavoriteAndSave(data) {
+    document.querySelector('.favourite-items').removeChild(document.getElementById(`${data}`))
+
+}
+

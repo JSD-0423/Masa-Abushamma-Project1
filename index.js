@@ -1,65 +1,83 @@
+import { rating } from "./global.js";
+import { getFavoriteAndSave } from "./global.js";
+import { getFavorites } from "./global.js";
+const loadingIcon = document.getElementById('loading-icon');
 
 const searchInput = document.querySelector('.search-input');
+const sortBySelect = document.getElementById('sort-by-select');
+const filterBySelect = document.getElementById('filter-by-select');
 
-searchInput.addEventListener('keyup', function () {
-    const searchTerm = searchInput.value;
-    const results = [];
+const categories = [];
+let typingTimeout = null;
+let sortByValue = '';
+let filterByValue = '';
+let searchInputValue = '';
+loadingIcon.style.display = 'block';
 
-    fetch('./classes.json')
-        .then(response => response.json())
-        .then(data => {
-            for (let i = 0; i < data.courses.length; i++) {
-                const obj = data.courses[i];
-                for (let key in obj) {
-                    if (obj[key].toString().toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
-                        results.push(obj);
-                        break;
-                    }
+window.onload = function () {
+    getDataAndSave();
+    getFavoriteAndSave(getFavorites());
+
+}
+
+async function searchWebTopics(searchInputValue, sortByValue, filterByValue) {
+    document.querySelector('.courses').innerHTML = '';
+    let fetchUrl = 'https://tap-web-1.herokuapp.com/topics/list';
+    if (!searchInputValue == '') {
+        fetchUrl = `https://tap-web-1.herokuapp.com/topics/list?phrase=${searchInputValue}`;
+    }
+    loadingIcon.style.display = 'block';
+    try {
+        await fetch(fetchUrl)
+            .then(response => response.json())
+            .then(data => {
+                loadingIcon.style.display = 'none';
+                if (sortByValue) {
+                    data.sort((a, b) => {
+                        if (a[`${sortByValue}`].toLowerCase() < b[`${sortByValue}`].toLowerCase()) {
+                            return -1;
+                        } else if (a[`${sortByValue}`].toLowerCase() > b[`${sortByValue}`].toLowerCase()) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    })
                 }
-            }
+                if (filterByValue) {
+                    data = data.filter(item => item.category === filterByValue);
+                }
+                document.querySelector('.number-of-courses').innerText = data.length;
+                data.map((x) => {
+                    createHtmlDom(x)
+                })
+            })
+    } catch (error) {
 
-            document.querySelector('.courses').innerHTML = '';
-            for (let i = 0; i < results.length; i++) {
-                const obj = results[i];
-                createHtmlDom(obj)
-            }
-        })
-        .catch(error => console.error(error));
-});
-fetch('./classes.json')
-    .then(response => response.json())
-    .then(data => {
-        document.querySelector('.number-of-courses').innerText = data.courses.length;
-        data.courses.map((x) => {
+    }
+
+}
+function fetchData() {
+    return fetch('https://tap-web-1.herokuapp.com/topics/list')
+        .then(response => response.json())
+        .catch(error => {
+            return [];
+        });
+}
+async function getDataAndSave() {
+    try {
+        const data = await fetchData();
+        loadingIcon.style.display = 'none';
+        document.querySelector('.number-of-courses').innerText = data.length;
+        data.map((x) => {
             createHtmlDom(x)
 
         })
-        data.favourites.map((x) => {
-            const div = document.createElement("div");
-            const imageDiv = document.createElement("div");
-            const pic = document.createElement("img");
-            const details = document.createElement('div')
-            const name = document.createElement("h1");
-            const author = document.createElement("p");
-            const stars = document.createElement('div');
-            imageDiv.appendChild(pic)
-            div.className += "favourite-card overflow-hidden m-1 rounded"
-            stars.className += 'rating d-flex';
-            details.className += 'details py-2';
-            imageDiv.className+='image-favourite-card'
-            details.appendChild(name)
-            details.appendChild(rating(x, stars))
-            div.appendChild(imageDiv)
-            div.appendChild(details)
-            pic.src = `${x.imageUrl}`;
-            pic.className+='object-fit-cover w-100';
-            name.className += 'overflow-hidden text-nowrap text-truncate m-0';
-            name.innerText = x.name;
-            author.innerText = `Author : ${x.author}`;
-            document.querySelector('.favourite-items').appendChild(div);
-        })
-        
-    })
+        return data;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 function createHtmlDom(values) {
     const courseCardContainer = document.createElement("div");
     const div = document.createElement("div");
@@ -73,10 +91,19 @@ function createHtmlDom(values) {
     stars.className += 'rating d-flex';
     details.className += 'details-container card-body';
     div.addEventListener('click', function () {
-        const itemId = values.name;
+        const itemId = values.id;
         const detailsUrl = `./pages/details/details.html?id=${itemId}`;
         window.location.href = detailsUrl;
     });
+    const option = document.createElement('option');
+
+    topic.innerText = values.category;
+    if (!categories.includes(values.category)) {
+        option.value = values.category;
+        option.textContent = values.category;
+        filterBySelect.append(option)
+        categories.push(values.category);
+    }
     details.appendChild(topic)
     details.appendChild(name)
     details.appendChild(rating(values, stars))
@@ -86,14 +113,44 @@ function createHtmlDom(values) {
     author.className += 'author-name m-0 overflow-hidden text-truncate font-weight-light';
     div.appendChild(pic)
     div.appendChild(details)
-    pic.src = values.imageUrl;
-    pic.className+='card-img-top w-100 bg-white object-fit-cover';
-    topic.innerText = values.topic;
-    name.innerText = values.name;
-    author.innerText = `Author : ${values.author}`;
+    pic.src = `./images/${values.image}`;
+    pic.className += 'card-img-top w-100 bg-white object-fit-cover';
+    name.innerText = values.topic;
+    author.innerText = `Author : ${values.name}`;
     pic.setAttribute('width', '400px');
     pic.setAttribute('height', '200px');
     courseCardContainer.appendChild(div)
-    courseCardContainer.className+='col';
+    courseCardContainer.className += 'col';
     document.querySelector('.courses').appendChild(courseCardContainer)
 }
+const handleFilterBySorting = (event) => {
+    if (!(event.target.value === 'Default')) {
+        sortByValue = event.target.value;
+
+    } else {
+        sortByValue = ''
+    }
+
+    searchWebTopics(searchInputValue, sortByValue, filterByValue)
+}
+const handleFilterBySelection = (event) => {
+    if (!(event.target.value === 'Default')) {
+        filterByValue = event.target.value;
+
+    } else {
+        filterByValue = ''
+    }
+    searchWebTopics(searchInputValue, sortByValue, filterByValue)
+}
+
+const handleSearchInput = (event) => {
+    clearTimeout(typingTimeout);
+    searchInputValue = event.target.value;
+    typingTimeout = setTimeout(() => {
+        searchWebTopics(searchInputValue, sortByValue, filterByValue);
+    }, 300);
+}
+
+filterBySelect.addEventListener('change', handleFilterBySelection);
+sortBySelect.addEventListener('change', handleFilterBySorting);
+searchInput.addEventListener('input', handleSearchInput);

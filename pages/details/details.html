@@ -26,16 +26,16 @@
       <div
         class="container header-container w-100 h-100 d-flex justify-content-between align-items-center"
       >
-        <h1>Web Topics</h1>
+        <h1 id="web-topic">Web Topics</h1>
         <div class="header-buttons d-flex gap-1">
           <button
             class="light-button dark-mood-button d-flex gap-1 align-items-center rounded px-2 py-1"
           >
             <ion-icon name="moon-outline"></ion-icon>
-            <p class="m-0">Dark Mode</p>
+            <p class="m-0" id="screen-mode-text">Dark Mode</p>
           </button>
           <button
-            onclick="openSlide()"
+          id="open-slide"
             class="light-button d-flex gap-1 align-items-center rounded"
           >
             <ion-icon name="heart-outline"></ion-icon>
@@ -64,12 +64,14 @@
           class="summary-box-container details-page-container position-relative"
         >
           <div class="summary-box py-4">
-            <h2 class="topic overflow-hidden text-nowrap text-truncate"></h2>
+            <h2 class="category overflow-hidden text-nowrap text-truncate"></h2>
             <h2
               class="h1 name overflow-hidden text-nowrap text-truncate text-light"
             ></h2>
             <div class="rating d-flex"></div>
-            <p class="details text-light pt-4 overflow-hidden text-truncate text-wrap"></p>
+            <p
+              class="details text-light pt-4 overflow-hidden text-truncate text-wrap"
+            ></p>
           </div>
           <div class="side-card position-absolute shadow-sm">
             <div class="sidecard-image-container">
@@ -90,8 +92,9 @@
                     </p>
                     <button
                       class="side-card-button w-100 overflow-hidden text-nowrap text-truncate"
+                      id="favorites-button"
                     >
-                      Add to Favourites
+                    <span id="side-card-button-text" class="text-light"></span>
                       <ion-icon name="heart-outline"></ion-icon>
                     </button>
                     <div
@@ -110,47 +113,22 @@
         <table class="table mt-4 topic-tabel rounded">
           <thead>
             <tr>
-              <th class="h4 px-4 align-items-center py-3 overflow-hidden text-truncate">HTML Sub Topics</th>
+              <th
+                class="h4 px-4 align-items-center py-3 overflow-hidden text-truncate"
+              >
+                <span id="sub-topic-name"></span> Sub Topics
+              </th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td class="d-flex px-4 gap-2 align-items-center py-3 overflow-hidden text-truncate">
-                <ion-icon name="checkmark-circle-outline"></ion-icon>
-                <p class="m-0">HTML syntax and structure</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="d-flex px-4 gap-2 align-items-center py-3 overflow-hidden text-truncate">
-                <ion-icon name="checkmark-circle-outline"></ion-icon>
-                <p class="m-0">HTML elements and attributes</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="d-flex px-4 gap-2 align-items-center py-3 overflow-hidden text-truncate">
-                <ion-icon name="checkmark-circle-outline"></ion-icon>
-                <p class="m-0">HTML forms and input elements</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="d-flex px-4 gap-2 align-items-center py-3 overflow-hidden text-truncate">
-                <ion-icon name="checkmark-circle-outline"></ion-icon>
-                <p class="m-0">HTML tables and lists</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="d-flex px-4 gap-2 align-items-center py-3 overflow-hidden text-truncate">
-                <ion-icon name="checkmark-circle-outline"></ion-icon>
-                <p class="m-0">HTML multimedia elements (audio, video, images)</p>
-              </td>
-            </tr>
-            <tr class="border-0">
-              <td class="d-flex px-4 gap-2 align-items-center py-3 border-0 overflow-hidden text-truncate">
-                <ion-icon name="checkmark-circle-outline"></ion-icon>
-                <p class="m-0">HTML accessibility and semantic markup</p>
-              </td>
-            </tr>
-          </tbody>
+          <tbody id="tBody"></tbody>
+          <img
+            src="../../Spinner.svg"
+            alt="Loading"
+            id="loadingIcon"
+            style="display: none"
+            class="mx-auto"
+          />
+          <div id="errorLoadData" class="error-message"></div>
         </table>
       </section>
     </div>
@@ -173,12 +151,13 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <script src="details.js"></script>
-    <script src="../../global.js"></script>
+    <script src="details.js" type="module"></script>
+    <script src="../../global.js" type="module"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
+      type="module"
     ></script>
   </body>
 </html>

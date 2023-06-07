@@ -32,7 +32,7 @@
       <div
         class="container header-container w-100 h-100 d-flex justify-content-between align-items-center"
       >
-        <h1 class="weight-light overflow-hidden text-nowrap text-truncate">
+        <h1 class="weight-light overflow-hidden text-nowrap text-truncate" id="web-topic">
           Web Topics
         </h1>
         <div class="d-flex gap-1">
@@ -40,10 +40,10 @@
             class="light-button dark-mood-button d-flex gap-1 align-items-center rounded px-2 py-1"
           >
             <ion-icon name="moon-outline"></ion-icon>
-            <p class="m-0 d-none d-md-block">Dark Mode</p>
+            <p class="m-0 d-none d-md-block" id="screen-mode-text">Dark Mode</p>
           </button>
           <button
-            onclick="openSlide()"
+            id="open-slide"
             class="light-button d-flex gap-1 align-items-center rounded"
           >
             <ion-icon name="heart-outline"></ion-icon>
@@ -69,7 +69,7 @@
     <main class="container pt-2">
       <form class="overflow-hidden shadow-sm mt-4">
         <div class="form-container d-md-flex justify-content-md-between">
-          <div class="search-container d-flex position-relative p-1">
+          <div class="search-container d-flex position-relative p-1 col-md-8">
             <span class="d-flex align-items-center px-2">
               <ion-icon name="search-outline"></ion-icon>
             </span>
@@ -79,20 +79,22 @@
               class="search-input w-100 border-0"
             />
           </div>
-          <div class="flex-grow-1">
-            <div class="select-container d-flex h-100 p-1">
+          <div class="col-md-4">
+            <div class="select-container d-flex h-100">
               <div class="select-box w-100 h-100 position-relative">
                 <div class="select-box-content px-2">
-                  <label for="sortBy" class="ps-1">Sort by:</label>
-                  <select name="sortBy" id="sortBy" class="w-100 border-0">
+                  <label for="sort-by-select" class="ps-1">Sort by:</label>
+                  <select name="sort-by-select" id="sort-by-select" class="w-100 border-0">
                     <option value="Default" class="w-100">Default</option>
+                    <option value="topic" class="w-100">Topic Title</option>
+                    <option value="name" class="w-100">Author Name</option>
                   </select>
                 </div>
               </div>
               <div class="select-box w-100 h-100 position-relative">
                 <div class="select-box-content px-2">
-                  <label for="filterBy" class="ps-1">Filter By:</label>
-                  <select name="filterBy" id="filterBy" class="w-100 border-0">
+                  <label for="filter-by-select" class="ps-1">Filter By:</label>
+                  <select name="filter-by-select" id="filter-by-select" class="w-100 border-0">
                     <option value="Default" class="w-100">Default</option>
                   </select>
                 </div>
@@ -105,15 +107,25 @@
         <h1 class="py-3">
           "<span class="number-of-courses"></span>" Web Topics Found
         </h1>
+        <img
+          src="Spinner.svg"
+          alt="Loading"
+          id="loading-icon"
+          style="display: none"
+          class="mx-auto"
+        />
         <div
           class="courses row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5 g-4"
         ></div>
+        <div id="errorLoadData" class="error-message"></div>
       </div>
     </main>
     <footer class="d-flex gap-1 justify-content-center align-items-center my-5">
       Developed with <ion-icon name="heart"></ion-icon> © 2023
     </footer>
-    <div class="favourite-container w-100 position-fixed bottom-0 left-0 py-4 px-5">
+    <div
+      class="favourite-container w-100 position-fixed bottom-0 left-0 py-4 px-5"
+    >
       <div class="container-fluid w-100">
         <p class="h5 pb-2"><strong>My Favourite Topics</strong></p>
         <div class="d-flex overflow-auto">
@@ -134,7 +146,7 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
-    <script src="index.js"></script>
-    <script src="global.js"></script>
+    <script src="index.js" type="module"></script>
+    <script src="global.js" type="module"></script>
   </body>
 </html>

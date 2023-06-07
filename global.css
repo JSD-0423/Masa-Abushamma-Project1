@@ -32,6 +32,9 @@ body {
   border: 1px solid var(--lines-color);
   background-color: var(--bg_default);
 }
+.error-message{
+  color: red;
+}
 /*header styles*/
 header {
   background-color: var(--bg_default);

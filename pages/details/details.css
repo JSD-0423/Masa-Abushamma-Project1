@@ -2,7 +2,7 @@
 .details-page-container{
   padding: 0 43% 0 19%;
 }
-.summary-box > .topic {
+.summary-box > .category {
   color: var(--brand-secondary);
   font-size: 1rem;
 }
