@@ -6,7 +6,7 @@ if (localStorage.getItem('darkBtnClicked') === 'true') {
     document.documentElement.setAttribute('data-theme', 'dark');
 } else {
     document.documentElement.setAttribute('data-theme', 'light');
-    document.getElementById('screen-mode-text').textContent = 'Light mode';
+    document.getElementById('screen-mode-text').textContent = 'Dark Mode';
 }
 
 document.getElementById('web-topic').addEventListener('click', function () {
@@ -39,12 +39,12 @@ export function rating(values, stars) {
 function switchTheme(e) {
     if (document.documentElement.getAttribute('data-theme') == 'dark') {
         localStorage.setItem('darkBtnClicked', false);
-        document.getElementById('screen-mode-text').textContent = 'Light Mode';
+        document.getElementById('screen-mode-text').textContent = 'Dark Mode';
         document.documentElement.setAttribute('data-theme', 'light');
     }
     else {
         localStorage.setItem('darkBtnClicked', true);
-        document.getElementById('screen-mode-text').textContent = 'Dark Mode';
+        document.getElementById('screen-mode-text').textContent = 'Light Mode';
         document.documentElement.setAttribute('data-theme', 'dark');
     }
 
