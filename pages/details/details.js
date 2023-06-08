@@ -1,14 +1,14 @@
-import { rating } from "../../global.js";
+import { createRating } from "../../global.js";
 import { getFavoriteAndSave } from "../../global.js";
-import { getcard } from "../../global.js";
+import { createFavoriteCard } from "../../global.js";
 import { fetchDataById } from "../../global.js";
 import { getFavorites } from "../../global.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const itemId = urlParams.get('id');
-var loadingIcon = document.getElementById('loadingIcon');
+const detailsLoadingIcon = document.getElementById('loadingIcon');
 
-loadingIcon.style.display = 'block';
+detailsLoadingIcon.style.display = 'block';
 
 function saveFavorites(favorites) {
     localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -17,7 +17,7 @@ function toggleFavorites() {
     const topicId = itemId;
     const favorites = getFavorites();
     if (favorites.includes(topicId)) {
-        var index = favorites.indexOf(topicId);
+        const index = favorites.indexOf(topicId);
         favorites.splice(index, 1);
         removeFavoriteAndSave(topicId)
         document.getElementById("side-card-button-text").innerText = "Add to Favorites";
@@ -42,13 +42,13 @@ window.onload = function () {
 async function getDataAndSave() {
     try {
         const data = await fetchDataById(itemId);
-        loadingIcon.style.display = 'none';
+        detailsLoadingIcon.style.display = 'none';
         document.getElementById('sub-topic-name').innerText = data.topic
         document.querySelector('.category').textContent = data.category;
         document.querySelector('title').textContent = `Details about ${data.topic}`;
         document.querySelector('.name').textContent = data.topic;
         const stars = document.createElement('div');
-        document.querySelector('.rating').appendChild(rating(data, stars));
+        document.querySelector('.rating').appendChild(createRating(data, stars));
         document.querySelector('.details').textContent = data.description;
         document.querySelector('.side-card-image').setAttribute('src', `../../images/${data.image}`)
         document.querySelector('.course-name').textContent = data.topic;
@@ -67,7 +67,7 @@ async function getDataAndSave() {
 async function appendFavoriteAndSave(id) {
     try {
         const favoritesData = await fetchDataById(id);
-        getcard(favoritesData, id);
+        createFavoriteCard(favoritesData, id);
 
     } catch (error) {
         console.log('Error:', error);

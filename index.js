@@ -1,7 +1,7 @@
-import { rating } from "./global.js";
+import { createRating } from "./global.js";
 import { getFavoriteAndSave } from "./global.js";
 import { getFavorites } from "./global.js";
-const loadingIcon = document.getElementById('loading-icon');
+const cardsLoadingIcon = document.getElementById('cards-loading-icon');
 
 const searchInput = document.querySelector('.search-input');
 const sortBySelect = document.getElementById('sort-by-select');
@@ -12,7 +12,7 @@ let typingTimeout = null;
 let sortByValue = '';
 let filterByValue = '';
 let searchInputValue = '';
-loadingIcon.style.display = 'block';
+cardsLoadingIcon.style.display = 'block';
 
 window.onload = function () {
     getDataAndSave();
@@ -26,12 +26,12 @@ async function searchWebTopics(searchInputValue, sortByValue, filterByValue) {
     if (!searchInputValue == '') {
         fetchUrl = `https://tap-web-1.herokuapp.com/topics/list?phrase=${searchInputValue}`;
     }
-    loadingIcon.style.display = 'block';
+    cardsLoadingIcon.style.display = 'block';
     try {
         await fetch(fetchUrl)
             .then(response => response.json())
             .then(data => {
-                loadingIcon.style.display = 'none';
+                cardsLoadingIcon.style.display = 'none';
                 if (sortByValue) {
                     data.sort((a, b) => {
                         if (a[`${sortByValue}`].toLowerCase() < b[`${sortByValue}`].toLowerCase()) {
@@ -66,7 +66,7 @@ function fetchData() {
 async function getDataAndSave() {
     try {
         const data = await fetchData();
-        loadingIcon.style.display = 'none';
+        cardsLoadingIcon.style.display = 'none';
         document.querySelector('.number-of-courses').innerText = data.length;
         data.map((x) => {
             createHtmlDom(x)
@@ -106,10 +106,10 @@ function createHtmlDom(values) {
     }
     details.appendChild(topic)
     details.appendChild(name)
-    details.appendChild(rating(values, stars))
+    details.appendChild(createRating(values, stars))
     details.appendChild(author)
     topic.className += 'topic overflow-hidden text-truncate m-0';
-    name.className += 'm-0 h1 text-break';
+    name.className += 'm-0 h1 text-break fw-bold';
     author.className += 'author-name m-0 overflow-hidden text-truncate font-weight-light';
     div.appendChild(pic)
     div.appendChild(details)

@@ -1,9 +1,13 @@
 const toggleSwitch = document.querySelector('.dark-mood-button');
+const favouriteLoadingIcon = document.getElementById('favourite-loading-icon');
+
 toggleSwitch.addEventListener('click', switchTheme, false);
-document.querySelector('#open-slide').addEventListener('click', openSlide);
+document.querySelector('#open-Favorite-slide').addEventListener('click', openFavoriteSlide);
+favouriteLoadingIcon.style.display = 'block';
 
 if (localStorage.getItem('darkBtnClicked') === 'true') {
     document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('screen-mode-text').textContent = 'Light Mode';
 } else {
     document.documentElement.setAttribute('data-theme', 'light');
     document.getElementById('screen-mode-text').textContent = 'Dark Mode';
@@ -14,7 +18,7 @@ document.getElementById('web-topic').addEventListener('click', function () {
     window.location.href = detailsUrl;
 });
 
-export function rating(values, stars) {
+export function createRating(values, stars) {
     for (let i = 0; i < values.rating; i++) {
         const star = document.createElement('span');
         const icon = document.createElement('ion-icon');
@@ -49,7 +53,7 @@ function switchTheme(e) {
     }
 
 }
- function openSlide() {
+function openFavoriteSlide() {
     let element = document.querySelector(".favourite-container");
     if (getComputedStyle(element).display === "none") {
         element.style.display = "block";
@@ -67,20 +71,21 @@ export function fetchDataById(itemId) {
         });
 }
 export function getFavorites() {
-    var favorites = localStorage.getItem("favorites");
+    const favorites = localStorage.getItem("favorites");
     return favorites ? JSON.parse(favorites) : [];
 }
 export async function getFavoriteAndSave(data) {
     try {
         data.map(async (id) => {
             const favoritesData = await fetchDataById(id);
-            getcard(favoritesData);
+            favouriteLoadingIcon.style.display = 'none';
+            createFavoriteCard(favoritesData);
         })
     } catch (error) {
         console.log('Error:', error);
     }
 }
-export function getcard(favoritesData) {
+export function createFavoriteCard(favoritesData) {
     const div = document.createElement("div");
     const imageDiv = document.createElement("div");
     const pic = document.createElement("img");
@@ -99,7 +104,7 @@ export function getcard(favoritesData) {
     details.className += 'details py-2';
     imageDiv.className += 'image-favourite-card'
     details.appendChild(name)
-    details.appendChild(rating(favoritesData, stars))
+    details.appendChild(createRating(favoritesData, stars))
     div.appendChild(imageDiv)
     div.appendChild(details)
     pic.src = `../../images/${favoritesData.image}`;

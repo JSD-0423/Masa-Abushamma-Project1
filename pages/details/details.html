@@ -35,7 +35,7 @@
             <p class="m-0" id="screen-mode-text">Dark Mode</p>
           </button>
           <button
-          id="open-slide"
+            id="open-Favorite-slide"
             class="light-button d-flex gap-1 align-items-center rounded"
           >
             <ion-icon name="heart-outline"></ion-icon>
@@ -94,7 +94,10 @@
                       class="side-card-button w-100 overflow-hidden text-nowrap text-truncate"
                       id="favorites-button"
                     >
-                    <span id="side-card-button-text" class="text-light"></span>
+                      <span
+                        id="side-card-button-text"
+                        class="text-light"
+                      ></span>
                       <ion-icon name="heart-outline"></ion-icon>
                     </button>
                     <div
@@ -138,6 +141,13 @@
     <div class="favourite-container w-100 position-fixed bottom-0 left-0 py-4">
       <div class="container-fluid w-100">
         <p class="h4 pb-3"><strong>My Favourite Topics</strong></p>
+        <img
+          src="Spinner.svg"
+          alt="Loading"
+          id="favourite-loading-icon"
+          style="display: none"
+          class="mx-auto"
+        />
         <div class="d-flex overflow-auto">
           <div class="favourite-items d-flex gap-3"></div>
         </div>

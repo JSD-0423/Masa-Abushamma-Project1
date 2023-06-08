@@ -32,7 +32,10 @@
       <div
         class="container header-container w-100 h-100 d-flex justify-content-between align-items-center"
       >
-        <h1 class="weight-light overflow-hidden text-nowrap text-truncate" id="web-topic">
+        <h1
+          class="weight-light overflow-hidden text-nowrap text-truncate"
+          id="web-topic"
+        >
           Web Topics
         </h1>
         <div class="d-flex gap-1">
@@ -40,10 +43,10 @@
             class="light-button dark-mood-button d-flex gap-1 align-items-center rounded px-2 py-1"
           >
             <ion-icon name="moon-outline"></ion-icon>
-            <p class="m-0 d-none d-md-block" id="screen-mode-text">Dark Mode</p>
+            <p class="m-0 d-none d-md-block" id="screen-mode-text"></p>
           </button>
           <button
-            id="open-slide"
+            id="open-Favorite-slide"
             class="light-button d-flex gap-1 align-items-center rounded"
           >
             <ion-icon name="heart-outline"></ion-icon>
@@ -84,7 +87,11 @@
               <div class="select-box w-100 h-100 position-relative">
                 <div class="select-box-content px-2">
                   <label for="sort-by-select" class="ps-1">Sort by:</label>
-                  <select name="sort-by-select" id="sort-by-select" class="w-100 border-0">
+                  <select
+                    name="sort-by-select"
+                    id="sort-by-select"
+                    class="w-100 border-0"
+                  >
                     <option value="Default" class="w-100">Default</option>
                     <option value="topic" class="w-100">Topic Title</option>
                     <option value="name" class="w-100">Author Name</option>
@@ -94,7 +101,11 @@
               <div class="select-box w-100 h-100 position-relative">
                 <div class="select-box-content px-2">
                   <label for="filter-by-select" class="ps-1">Filter By:</label>
-                  <select name="filter-by-select" id="filter-by-select" class="w-100 border-0">
+                  <select
+                    name="filter-by-select"
+                    id="filter-by-select"
+                    class="w-100 border-0"
+                  >
                     <option value="Default" class="w-100">Default</option>
                   </select>
                 </div>
@@ -110,7 +121,7 @@
         <img
           src="Spinner.svg"
           alt="Loading"
-          id="loading-icon"
+          id="cards-loading-icon"
           style="display: none"
           class="mx-auto"
         />
@@ -129,6 +140,13 @@
       <div class="container-fluid w-100">
         <p class="h5 pb-2"><strong>My Favourite Topics</strong></p>
         <div class="d-flex overflow-auto">
+          <img
+            src="Spinner.svg"
+            alt="Loading"
+            id="favourite-loading-icon"
+            style="display: none"
+            class="mx-auto"
+          />
           <div class="favourite-items d-flex gap-3"></div>
         </div>
       </div>
