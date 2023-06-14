@@ -1,0 +1,18 @@
+.search-input {
+  font-size: 1.1rem;
+  background-color: var(--bg_default);
+  color: var(--body-text);
+}
+select {
+  font-size: 1.1rem;
+  color: var(--body-text);
+  background-color: var(--bg_default);
+}
+
+label {
+  color: var(--body-text);
+  font-size: 0.8rem;
+}
+.select-box {
+  border-left: 1px solid var(--lines-color);
+}

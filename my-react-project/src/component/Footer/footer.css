@@ -1,0 +1,10 @@
+footer {
+    font-size: 1rem;
+    color: var(--body-text);
+    background-color: var(--bg_body);
+  }
+  footer ion-icon {
+    color: var(--heart-color);
+    width: 1.2em;
+    height: 1.2em;
+  }

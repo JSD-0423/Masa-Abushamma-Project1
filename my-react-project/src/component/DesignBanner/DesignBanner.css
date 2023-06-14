@@ -1,0 +1,47 @@
+/* cross design section */
+.cross-design {
+    height: 80px;
+  }
+  .cross-top {
+    clip-path: polygon(0 0, 0 100%, 90% 0);
+    background: linear-gradient(
+      to Right,
+      var(--brand-primary),
+      var(--brand-secondary) 100%
+    );
+  }
+  .cross-bottom {
+    clip-path: polygon(100% 0, 0 0, 100% 96%);
+    background: var(--brand-secondary);
+  }
+  .design-section {
+    background-color: var(--bg_default);
+  }
+  .design-section h2 {
+    color: var(--brand-secondary);
+    font-size: 1.3rem;
+  }
+  
+  .design-section .design-section-text {
+    top: -15px;
+    text-align: left;
+  }
+  .design-section .design-section-text p {
+    color: var(--body-text);
+  }
+  @media only screen and (max-width: 600px) {
+    .cross-design {
+      height: 35px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .design-section .design-section-text {
+      top: 10px;
+      padding-inline: 10px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .cross-top {
+      clip-path: polygon(0 0, 0 100%, 100% 0);
+    }
+  }

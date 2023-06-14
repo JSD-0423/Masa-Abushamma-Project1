@@ -1,0 +1,4 @@
+.light-button {
+    border: 1px solid var(--lines-color);
+    background-color: var(--bg_default);
+  }

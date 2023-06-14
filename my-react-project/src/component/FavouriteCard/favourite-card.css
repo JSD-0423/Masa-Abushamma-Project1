@@ -1,0 +1,19 @@
+/*favourate slide */
+.favourite-container {
+    background-color: var(--bg_default);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  }
+  .favourite-card {
+    width: 125px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.23);
+  }
+  .favourite-card > .details > h1 {
+    color: var(--body-text);
+    font-size: 1rem;
+  }
+  .favourite-card img {
+    height: 70px;
+  }
+  .favourite-card .details {
+    padding-inline: 7px;
+  }

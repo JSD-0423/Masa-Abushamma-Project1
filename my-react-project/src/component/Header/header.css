@@ -1,0 +1,8 @@
+header {
+  background-color: var(--bg_default);
+  height: 70px;
+}
+.header-container h1 {
+  font-size: 1.1rem;
+  color: var(--brand-primary);
+}

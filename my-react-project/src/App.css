@@ -1,0 +1,10 @@
+.light-button {
+  border: 1px solid var(--lines-color);
+  color: var(--body-text);
+}
+@media only screen and (max-width: 600px) {
+  .light-button {
+    padding: 4px 10px;
+    height: auto;
+  }
+}
