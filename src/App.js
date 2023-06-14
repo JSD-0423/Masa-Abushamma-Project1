@@ -24,7 +24,7 @@ function App() {
         <DesignBanner />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Details/:id" element={<Details />} />
+          <Route path="Details/:id" element={<Details />} />
         </Routes><Footer />
         {isFavouritePanelOpen &&
           <FavouriteBanner />}
