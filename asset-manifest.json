@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Masa-Abushamma-Project1/static/css/main.9887368d.css",
-    "main.js": "/Masa-Abushamma-Project1/static/js/main.14a6137a.js",
+    "main.js": "/Masa-Abushamma-Project1/static/js/main.2281aff6.js",
     "static/js/787.624ad79f.chunk.js": "/Masa-Abushamma-Project1/static/js/787.624ad79f.chunk.js",
     "static/media/analytics.png": "/Masa-Abushamma-Project1/static/media/analytics.7e81c6ec23532162f2ea.png",
     "static/media/angular.png": "/Masa-Abushamma-Project1/static/media/angular.fe7fe0b7dad8f1ba6bbd.png",
@@ -43,11 +43,11 @@
     "index.html": "/Masa-Abushamma-Project1/index.html",
     "static/media/search-outline.svg": "/Masa-Abushamma-Project1/static/media/search-outline.c3a9b743b3bfe662b714.svg",
     "main.9887368d.css.map": "/Masa-Abushamma-Project1/static/css/main.9887368d.css.map",
-    "main.14a6137a.js.map": "/Masa-Abushamma-Project1/static/js/main.14a6137a.js.map",
+    "main.2281aff6.js.map": "/Masa-Abushamma-Project1/static/js/main.2281aff6.js.map",
     "787.624ad79f.chunk.js.map": "/Masa-Abushamma-Project1/static/js/787.624ad79f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9887368d.css",
-    "static/js/main.14a6137a.js"
+    "static/js/main.2281aff6.js"
   ]
 }
