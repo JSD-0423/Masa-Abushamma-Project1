@@ -1,0 +1,52 @@
+.side-card {
+    width: 320px;
+    background-color: white;
+    top: 30px;
+    left: 59%;
+    border: 2px solid white;
+  }
+  .sidecard-image-container img {
+    height: 220px;
+  }
+  .side-card-details-container{
+  padding: 25px 15px 15px 15px;
+  }
+.side-card-content {
+  display: flex;
+  flex-direction: column;
+}
+.side-card-box p {
+  color: black;
+}
+.author-name {
+  text-decoration: underline;
+  color: blue;
+}
+.side-card-box {
+  margin-top: 10px;
+  border: 1px solid #dddddd;
+  padding-inline: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.course-name-author {
+  display: flex;
+  gap: 5px;
+  color: black;
+}
+.side-card-button {
+  height: 50px;
+  background-color: var(--brand-secondary);
+  border: none;
+  font-size: 1.3em;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.side-card-button ion-icon {
+  color: white;
+  font-size: 1.4em;
+}
