@@ -23,7 +23,7 @@ function App() {
         <Header toggleFavoriteSlide={toggleFavoriteSlide} />
         <DesignBanner />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="." element={<Home />} />
           <Route path="/Details/:id" element={<Details />} />
         </Routes><Footer />
         {isFavouritePanelOpen &&
