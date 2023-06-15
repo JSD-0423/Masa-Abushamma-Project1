@@ -6,3 +6,6 @@ header {
   font-size: 1.1rem;
   color: var(--brand-primary);
 }
+a{
+  text-decoration: none;
+}

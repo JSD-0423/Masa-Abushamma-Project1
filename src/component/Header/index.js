@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import LightButton from '../LightButton';
 
 import './header.css'
-import LightButton from '../LightButton';
 
 const Header = ({ toggleFavoriteSlide }) => {
     const [ModeScreenText, setModeScreenText] = useState('');
@@ -35,12 +36,14 @@ const Header = ({ toggleFavoriteSlide }) => {
             <div
                 className="container header-container w-100 h-100 d-flex justify-content-between align-items-center"
             >
+                <Link to={'/'}>
                 <h1
                     className="weight-light overflow-hidden text-nowrap text-truncate"
                     id="web-topic"
                 >
                     Web Topics
                 </h1>
+                </Link>
                 <div className="d-flex gap-1">
                     <LightButton onClickFunction={switchTheme} iconName={'moon-outline'} textId={'screen-mode-text'} textContent={ModeScreenText} />
                     <LightButton onClickFunction={toggleFavoriteSlide} iconName={'heart-outline'} textId={'Favourite-text'} textContent={'Favourites'} />

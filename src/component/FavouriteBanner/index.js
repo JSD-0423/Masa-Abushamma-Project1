@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 
-import './Favourite.css'
 import Spinner from '../Spinner';
 import { fetchDataById } from '../fetchData';
 import FavouriteCard from '../FavouriteCard';
+
+import './favourite.css'
+
 export const getFavorites = () => {
     const favorites = localStorage.getItem('favorites');
     return favorites ? JSON.parse(favorites) : [];

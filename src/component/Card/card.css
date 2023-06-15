@@ -1,4 +1,4 @@
-.course-card {
+.course-card.card.rounded.overflow-hidden.shadow-sm {
     background-color: var(--bg_default);
   }
   .course-card > img {

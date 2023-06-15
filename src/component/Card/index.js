@@ -12,7 +12,7 @@ const Card = ({value}) => {
                 <p className='topic overflow-hidden text-truncate m-0'>{value?.category}</p>
                 <h1 className='m-0 h1 text-break fw-bold'>{value?.topic}</h1>
                 <Rating ratingValue={value.rating}/>
-                <p className='author-name m-0 overflow-hidden text-truncate font-weight-light text-decoration-none pt-1'>{`Author : ${value?.name}`}</p>
+                <p className='author-name m-0 overflow-hidden text-truncate font-weight-light text-decoration-none pt-1'>{`Author: ${value?.name}`}</p>
 
             </div>
 

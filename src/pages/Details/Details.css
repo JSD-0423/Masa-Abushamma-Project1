@@ -91,7 +91,7 @@
     border-collapse: separate;
   }
   .table > :not(caption) > * > *{
-    background-color: var(--bg_body);
+    background-color: var(--bg_default);
     color: var(--body-text);
   }
   

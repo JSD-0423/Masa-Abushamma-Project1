@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { fetchDataById } from '../../component/fetchData';
-
-import './Details.css'
 import Rating from '../../component/Rating';
 import ErrorMessage from '../../component/ErrorMessage';
 import Spinner from '../../component/Spinner';
-import { getFavorites, getIsFavorites, handleToggleFavorite } from '../../component/FavouriteBanner';
+import { getIsFavorites, handleToggleFavorite } from '../../component/FavouriteBanner';
+import { fetchDataById } from '../../component/fetchData';
+
+import './Details.css'
 
 const Details = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [isDisplayData, setisDisplayData] = useState(false);
     const [sideCardButtonText, setSideCardButtonText] = useState('');
-    const [favorites, setFavorites] = useState(getFavorites());
-    const [isFavorite, setIsFavorite] = useState(false);
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetchDataById(id);

@@ -6,3 +6,12 @@ export function fetchDataById(itemId) {
             return [];
         });
 }
+
+export function fetchDataByUrl(url) {
+    return fetch(url)
+        .then(response => response.json())
+        .catch(error => {
+            console.log('Error:', error);
+            return [];
+        });
+}
