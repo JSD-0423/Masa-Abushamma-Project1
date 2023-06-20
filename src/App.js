@@ -18,6 +18,7 @@ function App() {
 
   };
   return (
+    <React.StrictMode>
     <Router basename="/Masa-Abushamma-Project1">
       <div className="App">
         <Header toggleFavoriteSlide={toggleFavoriteSlide} />
@@ -30,6 +31,7 @@ function App() {
           <FavouriteBanner />}
       </div>
     </Router>
+    </React.StrictMode>
   );
 }
 
