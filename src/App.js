@@ -8,7 +8,7 @@ import { useState } from 'react';
 import DesignBanner from './component/DesignBanner';
 import Footer from './component/Footer';
 import Home from './pages/Home'
-import { BrowserRouter as Router, Routes, Route, HashRouter } from 'react-router-dom';
+import { BrowserRouter , Routes, Route, HashRouter } from 'react-router-dom';
 import Details from './pages/Details';
 
 function App() {
@@ -19,7 +19,6 @@ function App() {
 
   };
   return (
-      <BrowserRouter>
       <HashRouter basename="/">
       <div className="App">
         <Header toggleFavoriteSlide={toggleFavoriteSlide} />
@@ -32,7 +31,6 @@ function App() {
           <FavouriteBanner />}
       </div>
       </HashRouter>
-    </BrowserRouter>
   );
 }
 
