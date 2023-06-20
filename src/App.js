@@ -18,7 +18,7 @@ function App() {
 
   };
   return (
-    <Router basename="/">
+    <Router basename="./">
       <div className="App">
         <Header toggleFavoriteSlide={toggleFavoriteSlide} />
         <DesignBanner />
