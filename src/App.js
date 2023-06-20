@@ -2,6 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import Header from './component/Header';
+import React from 'react';
 import FavouriteBanner from './component/FavouriteBanner'
 import { useState } from 'react';
 import DesignBanner from './component/DesignBanner';
