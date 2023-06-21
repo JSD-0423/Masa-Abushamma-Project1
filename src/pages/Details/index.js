@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 
 import Rating from '../../component/Rating';
 import Spinner from '../../component/Spinner';
-// import { getIsFavorites, handleToggleFavorite } from '../../component/FavouriteBanner';
 import { fetchDataById } from '../../component/fetchData';
 
 import './Details.css'
