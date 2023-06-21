@@ -1,33 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import LightButton from '../LightButton';
 
 import './header.css'
+import { ThemeContext } from '../../contexts/Theme/ThemeContext';
 
 const Header = ({ toggleFavoriteSlide }) => {
+    const themeMode = useContext(ThemeContext);
     const [ModeScreenText, setModeScreenText] = useState('');
-    function setMode(Mode,ModeText){
-        document.documentElement.setAttribute('data-theme', Mode);
-        setModeScreenText(ModeText)
-    }
     useEffect(() => {
-        if (localStorage.getItem('darkBtnClicked') === 'true') {
-            setMode('dark','Light Mode')
+        if (themeMode.currentTheme.name === 'dark') {
+            setModeScreenText('Light Mode')
         } else {
-            setMode('light','Dark Mode')
+            setModeScreenText('Dark Mode')
         }
 
-    }, []);
+    }, [themeMode]);
     const switchTheme = () => {
-        if (document.documentElement.getAttribute('data-theme') == 'dark') {
-            localStorage.setItem('darkBtnClicked', false);
-            setMode('light','Dark Mode')
-        }
-        else {
-            localStorage.setItem('darkBtnClicked', true);
-            setMode('dark','Light Mode')
-        }
+        setModeScreenText(themeMode.toggleTheme());
     };
 
 
@@ -37,12 +28,12 @@ const Header = ({ toggleFavoriteSlide }) => {
                 className="container header-container w-100 h-100 d-flex justify-content-between align-items-center"
             >
                 <Link to={'/'}>
-                <h1
-                    className="weight-light overflow-hidden text-nowrap text-truncate"
-                    id="web-topic"
-                >
-                    Web Topics
-                </h1>
+                    <h1
+                        className="weight-light overflow-hidden text-nowrap text-truncate"
+                        id="web-topic"
+                    >
+                        Web Topics
+                    </h1>
                 </Link>
                 <div className="d-flex gap-1">
                     <LightButton onClickFunction={switchTheme} iconName={'moon-outline'} textId={'screen-mode-text'} textContent={ModeScreenText} />
