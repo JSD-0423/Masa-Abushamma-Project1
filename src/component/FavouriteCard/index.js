@@ -10,7 +10,7 @@ const FavouriteCard = ({value}) => {
 
     return (
         <Link to={`/Details/${value.id}`} className='text-decoration-none'>
-            <div className='favourite-card overflow-hidden m-1 rounded w-100'>
+            <div className='favourite-card overflow-hidden m-1 rounded'>
                 <div className='image-favourite-card'>
                     <img src={require(`../../images/${value?.image}`)} className='object-fit-cover w-100'></img>
                 </div>
