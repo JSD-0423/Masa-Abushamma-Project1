@@ -7,7 +7,7 @@ import './favourite-card.css'
 
 const FavouriteCard = ({value}) => {
 
-
+//FavouriteCard
     return (
         <Link to={`/Details/${value.id}`} className='text-decoration-none'>
             <div className='favourite-card overflow-hidden m-1 rounded'>
