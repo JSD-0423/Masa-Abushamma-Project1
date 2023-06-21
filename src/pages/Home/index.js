@@ -6,18 +6,23 @@ import Spinner from '../../component/Spinner';
 import Select from '../../component/Select';
 import ErrorMessage from '../../component/ErrorMessage';
 import SearchBox from '../../component/SearchBox';
-import { fetchDataByUrl } from '../../component/fetchData';
 
 import './home.css';
+import { UseApi } from '../../hooks/UseApi';
 
 const Home = () => {
-    const [data, setData] = useState(null);
-    const [dataLength, setDataLength] = useState(null);
     const [searchInputValue, setSearchInputValue] = useState(null);
     const [sortByValue, setsortByValue] = useState(null);
     const [filterByValue, setfilterByValue] = useState(null);
-    const [isDisplayData, setisDisplayData] = useState(false);
     const [filterBy, setfilterBy] = useState(null);
+    let apiUrl = 'https://tap-web-1.herokuapp.com/topics/list';
+
+    if (searchInputValue) {
+        apiUrl += `?phrase=${searchInputValue}`;
+    }
+    const { dataAPI, loading, error } = UseApi(apiUrl);
+    const [data, setData] = useState(dataAPI);
+    const [dataLength, setDataLength] = useState(dataAPI?.length);
 
     const handleSearchInputChange = (event) => {
         setSearchInputValue(event.target.value);
@@ -29,19 +34,16 @@ const Home = () => {
         setsortByValue(event.target.value);
     }
 
-    const fetchData = async (searchInputValue, sortByValue, filterByValue) => {
-        let apiUrl = 'https://tap-web-1.herokuapp.com/topics/list';
+    useEffect(() => {
+        setData(dataAPI);
+        setDataLength(dataAPI?.length)
+        setfilterBy([{ value: 'Default', id: 'default' }, ...[...new Set(dataAPI?.map(item => item.category))]?.map(item => ({ value: item, id: item }))])
 
-        if (searchInputValue) {
-            apiUrl += `?phrase=${searchInputValue}`;
-        }
-        const fetchData = async () => {
-            const response = await fetchDataByUrl(apiUrl);
-            setisDisplayData(true)
-            setDataLength(response.length)
-            setfilterBy([{ value: 'Default', id: 'default' }, ...[...new Set(response.map(item => item.category))].map(item => ({ value: item, id: item }))])
-            if (sortByValue) {
-                response.sort((a, b) => {
+        let updatedData = Array.isArray(dataAPI) ? [...dataAPI] : [];
+
+        if (sortByValue) {
+            if (sortByValue !== 'default') {
+                updatedData.sort((a, b) => {
                     if (a[`${sortByValue}`]?.toLowerCase() < b[`${sortByValue}`]?.toLowerCase()) {
                         return -1;
                     } else if (a[`${sortByValue}`]?.toLowerCase() > b[`${sortByValue}`]?.toLowerCase()) {
@@ -51,17 +53,21 @@ const Home = () => {
                     }
                 })
             }
-            setData(response);
-            if (filterByValue) {
-                setData(response.filter(item => item.category === filterByValue))
+            else {
+                updatedData = Array.isArray(dataAPI) ? [...dataAPI] : [];
             }
-            else setData(response);
-        };
-        fetchData();
-    };
-    useEffect(() => {
-        fetchData(searchInputValue, sortByValue, filterByValue);
-    }, [searchInputValue, sortByValue, filterByValue]);
+        }
+
+        if (filterByValue) {
+            if (filterByValue !== 'default') {
+                updatedData = updatedData.filter(item => item.category === filterByValue)
+            }
+        }
+
+        setData(updatedData);
+        setDataLength(updatedData?.length);
+
+    }, [dataAPI, searchInputValue, sortByValue, filterByValue]);
     return (
         <div className='home'>
             <main className="container pt-2">
@@ -80,11 +86,10 @@ const Home = () => {
                     <h1 className="py-4 fw-bold">
                         "{dataLength}" Web Topics Found
                     </h1>
-                    <Spinner isDisplay={isDisplayData} />
+                    <Spinner isDisplay={!loading} />
                     <div
                         className="courses row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5 g-4"
                     >
-
                         {data?.map((x) => {
                             return (
                                 <Link to={`/Details/${x.id}`} style={{ textDecoration: 'none' }}>
@@ -93,7 +98,7 @@ const Home = () => {
                             );
                         })}
                     </div>
-                    <ErrorMessage />
+                    {error && <ErrorMessage />}
                 </div>
             </main>
         </div>

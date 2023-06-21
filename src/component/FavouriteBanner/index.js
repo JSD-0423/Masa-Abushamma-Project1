@@ -15,7 +15,7 @@ export const updateFavorites = (favorites) => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 export const getIsFavorites = (favoriteId) => {
-    return getFavorites().includes(favoriteId);
+    return getFavorites()?.includes(favoriteId);
 
 };
 export const addToFavorites = (id) => {
@@ -48,8 +48,9 @@ const FavouriteBanner = () => {
 
     useEffect(() => {
         const fetchDataForFavorites = async () => {
-            const promises = favorites.map((favorite) => fetchDataById(favorite));
+            const promises = favorites?.map((favorite) => fetchDataById(favorite));
             const arrayOfData = await Promise.all(promises);
+            console.log(arrayOfData)
             setData(arrayOfData);
         };
 
