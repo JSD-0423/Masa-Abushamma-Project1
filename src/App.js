@@ -8,9 +8,10 @@ import { useState } from 'react';
 import DesignBanner from './component/DesignBanner';
 import Footer from './component/Footer';
 import Home from './pages/Home'
-import { BrowserRouter , Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Details from './pages/Details';
 import { ThemeProvider } from './contexts/Theme/ThemeContext';
+import { FavoritesProvider } from './contexts/DataContext/FavouriteContext';
 function App() {
   const [isFavouritePanelOpen, setIsFavouritePanelOpen] = useState(false);
   const toggleFavoriteSlide = () => {
@@ -20,18 +21,20 @@ function App() {
   };
   return (
     <ThemeProvider>
-      <BrowserRouter basename="/Masa-Abushamma-Project1">
-        <div className="App">
-          <Header toggleFavoriteSlide={toggleFavoriteSlide} />
-          <DesignBanner />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Details/:id" element={<Details />} />
-          </Routes><Footer />
-          {isFavouritePanelOpen &&
-            <FavouriteBanner />}
-        </div>
-      </BrowserRouter>
+      <FavoritesProvider>
+        <BrowserRouter basename="/Masa-Abushamma-Project1">
+          <div className="App">
+            <Header toggleFavoriteSlide={toggleFavoriteSlide} />
+            <DesignBanner />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Details/:id" element={<Details />} />
+            </Routes><Footer />
+            {isFavouritePanelOpen &&
+              <FavouriteBanner />}
+          </div>
+        </BrowserRouter>
+      </FavoritesProvider>
     </ThemeProvider>
   );
 }

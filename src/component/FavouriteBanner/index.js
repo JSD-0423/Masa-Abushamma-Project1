@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 
 import Spinner from '../Spinner';
@@ -6,51 +6,17 @@ import { fetchDataById } from '../fetchData';
 import FavouriteCard from '../FavouriteCard';
 
 import './favourite.css'
+import { FavoritesContext } from '../../contexts/DataContext/FavouriteContext';
 
-export const getFavorites = () => {
-    const favorites = localStorage.getItem('favorites');
-    return favorites ? JSON.parse(favorites) : [];
-};
-export const updateFavorites = (favorites) => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-};
-export const getIsFavorites = (favoriteId) => {
-    return getFavorites()?.includes(favoriteId);
-
-};
-export const addToFavorites = (id) => {
-    const favorites = getFavorites();
-    favorites.push(id)
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-};
-export const removeFromFavorites = (id) => {
-    const favorites = getFavorites();
-    const newArray = favorites.filter((item) => item !== id);
-    localStorage.setItem('favorites', JSON.stringify(newArray));
-};
-
-
-export const handleToggleFavorite = (id, setSideCardButtonText) => {
-    if (!getIsFavorites(id)) {
-        setSideCardButtonText("Remove from Favorites");
-        addToFavorites(id)
-
-    } else {
-        setSideCardButtonText("Add to Favorites");
-        removeFromFavorites(id)
-    }
-
-};
 const FavouriteBanner = () => {
     const [isDisplayData, setisDisplayData] = useState(false);
-    const [favorites, setFavorites] = useState(getFavorites());
     const [data, setData] = useState([]);
+    const favorites = useContext(FavoritesContext);
 
     useEffect(() => {
         const fetchDataForFavorites = async () => {
-            const promises = favorites?.map((favorite) => fetchDataById(favorite));
+            const promises = favorites.getFavorites()?.map((favorite) => fetchDataById(favorite));
             const arrayOfData = await Promise.all(promises);
-            console.log(arrayOfData)
             setData(arrayOfData);
         };
 
@@ -58,7 +24,7 @@ const FavouriteBanner = () => {
         setisDisplayData(true)
 
 
-    }, [favorites]);
+    }, [favorites,favorites.getFavorites()]);
 
     return (
         <div

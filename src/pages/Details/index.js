@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Rating from '../../component/Rating';
 import Spinner from '../../component/Spinner';
-import { getIsFavorites, handleToggleFavorite } from '../../component/FavouriteBanner';
+// import { getIsFavorites, handleToggleFavorite } from '../../component/FavouriteBanner';
 import { fetchDataById } from '../../component/fetchData';
 
 import './Details.css'
 import TableComponent from '../../component/TableComponent';
 import SideCard from '../../component/SideCard';
+import { FavoritesContext } from '../../contexts/DataContext/FavouriteContext';
 
 const Details = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [isDisplayData, setisDisplayData] = useState(false);
     const [sideCardButtonText, setSideCardButtonText] = useState('');
+    const favourite=useContext(FavoritesContext);
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetchDataById(id);
@@ -22,16 +24,16 @@ const Details = () => {
             setisDisplayData(true);
         };
         fetchData();
-        if (!getIsFavorites(id)) {
-            setSideCardButtonText("Add to Favorites");
+        if (!favourite.getIsFavorites(id)) {
+           setSideCardButtonText("Add to Favorites");
         } else {
-            setSideCardButtonText("Remove from Favorites");
-        }
+           setSideCardButtonText("Remove from Favorites");
+         }
 
 
-    }, []);
+    }, [id,favourite]);
     function toggleFavorites() {
-        handleToggleFavorite(id,setSideCardButtonText);
+        favourite.handleToggleFavorite(id,setSideCardButtonText);
     }
     return (
         <div className='detailsPage'>
