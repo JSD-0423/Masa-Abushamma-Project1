@@ -9,15 +9,18 @@ import SearchBox from '../../component/SearchBox';
 
 import './home.css';
 import { UseApi } from '../../hooks/UseApi';
+import UseDebounce from '../../hooks/UseDebounce';
+import { API_BASE_URL } from '../../constant/apiConstant';
 
 const Home = () => {
     const [searchInputValue, setSearchInputValue] = useState(null);
     const [sortByValue, setsortByValue] = useState(null);
     const [filterByValue, setfilterByValue] = useState(null);
     const [filterBy, setfilterBy] = useState(null);
-    let apiUrl = 'https://tap-web-1.herokuapp.com/topics/list';
+    const debouncedSearchTerm = UseDebounce(searchInputValue, 300);
+    let apiUrl = API_BASE_URL;
 
-    if (searchInputValue) {
+    if (debouncedSearchTerm) {
         apiUrl += `?phrase=${searchInputValue}`;
     }
     const { dataAPI, loading, error } = UseApi(apiUrl);
@@ -67,7 +70,7 @@ const Home = () => {
         setData(updatedData);
         setDataLength(updatedData?.length);
 
-    }, [dataAPI, searchInputValue, sortByValue, filterByValue]);
+    }, [dataAPI, debouncedSearchTerm, sortByValue, filterByValue]);
     return (
         <div className='home'>
             <main className="container pt-2">
