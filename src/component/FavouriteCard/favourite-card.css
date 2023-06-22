@@ -12,6 +12,7 @@
     font-size: 1rem;
   }
   .favourite-card img {
+    background-color: white;
     height: 70px;
   }
   .favourite-card .details {

@@ -3,26 +3,24 @@ import { useParams } from 'react-router-dom';
 
 import Rating from '../../component/Rating';
 import Spinner from '../../component/Spinner';
-import { fetchDataById } from '../../component/fetchData';
 
 import './Details.css'
 import TableComponent from '../../component/TableComponent';
 import SideCard from '../../component/SideCard';
 import { FavoritesContext } from '../../contexts/DataContext/FavouriteContext';
+import { API_DETAILS_URL } from '../../constant/apiConstant';
+import { UseApi } from '../../hooks/UseApi';
 
 const Details = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [isDisplayData, setisDisplayData] = useState(false);
     const [sideCardButtonText, setSideCardButtonText] = useState('');
+    const { dataAPI, loading, error } = UseApi(API_DETAILS_URL+`/${id}`);
     const favourite=useContext(FavoritesContext);
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetchDataById(id);
-            setData(response);
-            setisDisplayData(true);
-        };
-        fetchData();
+            setData(dataAPI);
+            setisDisplayData(!loading);
         if (!favourite.getIsFavorites(id)) {
            setSideCardButtonText("Add to Favorites");
         } else {
@@ -30,7 +28,7 @@ const Details = () => {
          }
 
 
-    }, [id,favourite]);
+    }, [id,favourite,dataAPI]);
     function toggleFavorites() {
         favourite.handleToggleFavorite(id,setSideCardButtonText);
     }
