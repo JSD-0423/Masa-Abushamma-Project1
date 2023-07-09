@@ -24,7 +24,7 @@ const FavouriteBanner = () => {
         setisDisplayData(true)
 
 
-    }, [favorites,favorites.getFavorites()]);
+    }, [favorites]);
 
     return (
         <div
