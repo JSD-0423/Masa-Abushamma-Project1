@@ -1,10 +1,12 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 export const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
+    const [favouriteValue,setFavourite]=useState([]);
     const getFavorites = () => {
         const favorites = localStorage.getItem('favorites');
+        setFavourite(favorites)
         return favorites ? JSON.parse(favorites) : [];
     };
     const getIsFavorites = (favoriteId) => {
@@ -13,6 +15,7 @@ export const FavoritesProvider = ({ children }) => {
     };
     const addToFavorites = (id) => {
         let favorites = getFavorites();
+        setFavourite(favorites)
         if (!favorites) {
             favorites = [id]
         }
@@ -24,6 +27,7 @@ export const FavoritesProvider = ({ children }) => {
     const removeFromFavorites = (id) => {
         const favorites = getFavorites();
         const newArray = favorites.filter((item) => item !== id);
+        setFavourite(favorites)
         localStorage.setItem('favorites', JSON.stringify(newArray));
     };
     const handleToggleFavorite = (id, setSideCardButtonText) => {
@@ -38,7 +42,7 @@ export const FavoritesProvider = ({ children }) => {
 
     };
     return (
-        <FavoritesContext.Provider value={{ getFavorites, handleToggleFavorite, getIsFavorites }}>
+        <FavoritesContext.Provider value={{ getFavorites, handleToggleFavorite, getIsFavorites,favouriteValue }}>
             {children}
         </FavoritesContext.Provider>
     )
